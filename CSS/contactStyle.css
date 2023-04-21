@@ -27,8 +27,8 @@ textarea {
 
 input[type="submit"] {
   padding: 0.5rem 1rem;
-  background-color: #333;
-  color: #fff;
+  background-color: rgb(52, 9, 9);
+    color: rgb(232, 220, 180);
   border: none;
   border-radius: 3px;
   cursor: pointer;
@@ -36,5 +36,6 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
-  background-color: #333;
+    background-color: rgb(232, 220, 180);
+    color: rgb(52, 9, 9);
 }

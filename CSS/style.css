@@ -7,8 +7,8 @@ body {
 }
 
 header {
-    background-color: #333;
-    color: #fff;
+    background-color: rgb(232, 220, 180);
+    color: rgb(52, 9, 9);
     padding: 2px;
     text-align: center;
 }
@@ -19,8 +19,8 @@ h1 {
 }
 
 nav {
-    background-color: #555;
-    color: #fff;
+    background-color: rgb(52, 9, 9);
+    color: rgb(232, 220, 180);
     padding: 10px;
     text-align: center;
 }
@@ -54,7 +54,7 @@ section p {
 }
 
 section button {
-    background-color: #333;
+    background-color: rgb(52, 9, 9);
     color: #fff;
     padding: 10px 20px;
     border: none;
@@ -64,13 +64,13 @@ section button {
 }
 
 section button:hover {
-    background-color: #555;
-    color: #F0F0F0;
+    background-color: rgb(232, 220, 180);
+    color: rgb(52, 9, 9);
 }
 
 footer {
-    background-color: #555;
-    color: #fff;
+    background-color: rgb(52, 9, 9);
+    color: rgb(232, 220, 180);
     padding: 1px;
     text-align: center;
 }

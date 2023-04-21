@@ -19,8 +19,32 @@
 	position: relative;
 }
 
-#card-chorChitthi {
-	background-image:url(/IMG/carrdChorChitthi.jpeg) ;
+div #card-chorChitthi {
+	background-image: url(/IMG/carrdChorChitthi.png);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+
+}
+
+div #card-ticTacToe {
+	background-image: url(/IMG/ticTacToe.png);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+
+}
+
+div #card-snake {
+	background-image: url(/IMG/snake.png);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+
+}
+div .game-card:hover{
+background-color: #555;
+transform: translate(-1%, 1%) scale(1.1);
 }
 
 /* Style for the game GIF */
@@ -41,7 +65,7 @@
 }
 
 /* Style for the play button */
-.play-button {
+/* .play-button {
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -63,4 +87,4 @@
 .play-button:hover {
 	transform: translate(-50%, -50%) scale(1.1);
 	background-color: #555;
-}
+} */
