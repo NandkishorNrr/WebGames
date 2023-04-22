@@ -1,0 +1,62 @@
+.container {
+	position: relative;
+	height: 100vh;
+}
+
+.left-top {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 21.5%;
+	height: 68%;
+	background-color: rgb(245, 239, 222);
+
+	padding: 20px;
+	padding-top: 5px;
+	border-radius: 10px;
+	box-shadow: 5px 5px 5px #C2C2C2;
+}
+
+.left-bottom {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 21.5%;
+	height: 21.5%;
+	background-color: rgb(245, 239, 222);
+
+	padding: 20px;
+	border-radius: 10px;
+	box-shadow: 5px 5px 5px #C2C2C2;
+}
+
+.button-container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+}
+
+.button-container button {
+	margin-right: 10px;
+}
+
+.centered-button {
+	margin-top: 10px;
+	align-self: center;
+}
+
+
+.right-side {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 72.5%;
+	height: 94%;
+	background-color: rgb(245, 239, 222);
+
+	padding: 20px;
+	border-radius: 10px;
+	box-shadow: 5px 5px 5px #C2C2C2;
+}
+

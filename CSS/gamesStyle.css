@@ -42,9 +42,10 @@ div #card-snake {
 	background-position: center center;
 
 }
-div .game-card:hover{
-background-color: #555;
-transform: translate(-1%, 1%) scale(1.1);
+
+div .game-card:hover {
+	background-color: #555;
+	transform: translate(-1%, 1%) scale(1.1);
 }
 
 /* Style for the game GIF */

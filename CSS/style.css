@@ -37,7 +37,7 @@ nav a:hover {
 }
 
 section {
-height: 490px;
+    height: 490px;
     padding: 20px;
     text-align: center;
 }
@@ -53,7 +53,8 @@ section p {
     margin: 0 0 20px 0;
 }
 
-section button {
+section .btn {
+    text-decoration: none;
     background-color: rgb(52, 9, 9);
     color: #fff;
     padding: 10px 20px;
@@ -63,8 +64,24 @@ section button {
     cursor: pointer;
 }
 
-section button:hover {
-    background-color: rgb(232, 220, 180);
+section .btn:hover {
+    background-color: rgb(214, 155, 155);
+    color: rgb(52, 9, 9);
+}
+
+button {
+    text-decoration: none;
+    background-color: rgb(52, 9, 9);
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: rgb(214, 155, 155);
     color: rgb(52, 9, 9);
 }
 
@@ -74,4 +91,3 @@ footer {
     padding: 1px;
     text-align: center;
 }
-
