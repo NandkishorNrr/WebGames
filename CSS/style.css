@@ -1,93 +1,155 @@
 /* home */
 body {
-    background-color: #F0F0F0;
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
+  background-color: #F0F0F0;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
 }
 
 header {
-    background-color: rgb(232, 220, 180);
-    color: rgb(52, 9, 9);
-    padding: 2px;
-    text-align: center;
+  background-color: rgb(232, 220, 180);
+  color: rgb(52, 9, 9);
+  padding: 2px;
+  text-align: center;
 }
 
 h1 {
-    margin: 0;
-    font-size: 30px;
+  margin: 0;
+  font-size: 30px;
 }
 
 nav {
-    background-color: rgb(52, 9, 9);
-    color: rgb(232, 220, 180);
-    padding: 10px;
-    text-align: center;
+  background-color: rgb(52, 9, 9);
+  color: rgb(232, 220, 180);
+  padding: 10px;
+  text-align: center;
+  display: flex;
 }
 
 nav a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 20px;
-    margin-right: 20px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 20px;
+  margin-right: 20px;
 }
 
 nav a:hover {
-    color: #F0F0F0;
+  color: #F0F0F0;
 }
 
 section {
-    height: 490px;
-    padding: 20px;
-    text-align: center;
+  height: 490px;
+  padding: 20px;
+  text-align: center;
 }
 
 section h2 {
-    font-size: 30px;
-    margin: 0 0 20px 0;
+  font-size: 30px;
+  margin: 0 0 20px 0;
 }
 
 section p {
-    font-size: 20px;
-    line-height: 1.5;
-    margin: 0 0 20px 0;
+  font-size: 20px;
+  line-height: 1.5;
+  margin: 0 0 20px 0;
 }
 
-section .btn {
-    text-decoration: none;
-    background-color: rgb(52, 9, 9);
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    font-size: 20px;
-    cursor: pointer;
+.btn {
+  text-decoration: none;
+  background-color: rgb(52, 9, 9);
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 20px;
+  cursor: pointer;
 }
 
 section .btn:hover {
-    background-color: rgb(214, 155, 155);
-    color: rgb(52, 9, 9);
+  background-color: rgb(214, 155, 155);
+  color: rgb(52, 9, 9);
 }
 
 button {
-    text-decoration: none;
-    background-color: rgb(52, 9, 9);
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    font-size: 20px;
-    cursor: pointer;
+  text-decoration: none;
+  background-color: rgb(52, 9, 9);
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 20px;
+  cursor: pointer;
+  margin-bottom: 10px;
 }
 
 button:hover {
-    background-color: rgb(214, 155, 155);
-    color: rgb(52, 9, 9);
+  background-color: rgb(214, 155, 155);
+  color: rgb(52, 9, 9);
 }
 
 footer {
-    background-color: rgb(52, 9, 9);
-    color: rgb(232, 220, 180);
-    padding: 1px;
+  background-color: rgb(52, 9, 9);
+  color: rgb(232, 220, 180);
+  padding: 1px;
+  text-align: center;
+
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+/* responsive */
+
+/* Default styles for all devices */
+
+
+/* Styles for screens larger than 768px */
+@media (min-width: 768px) {
+  body {
+    font-size: 18px;
+  }
+
+  header {
     text-align: center;
+  }
+
+  section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* Styles for screens smaller than 768px */
+@media (max-width: 767px) {
+
+  .btn {
+    padding: 8px 16px;
+    font-size: 16px;
+  }
+
+  #card-snake {
+    margin-bottom: 20%;
+  }
+}
+
+/* Styles for mobile devices */
+@media (max-width: 480px) {
+  header h1 {
+    font-size: 24px;
+  }
+
+  section h2 {
+    font-size: 24px;
+  }
+
+  .btn {
+    padding: 8px 16px;
+    font-size: 16px;
+  }
+
+  #card-snake {
+    margin-bottom: 20%;
+  }
 }
