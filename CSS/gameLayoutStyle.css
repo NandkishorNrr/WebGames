@@ -32,20 +32,21 @@ body {
 }
 
 .card-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 0.2%;
+  height: 100%;
+  width: 100%;
+  background-color: #bf8383;
 }
 
 .card {
-  width: 100px;
-  height: 150px;
-  background-color: #ffffff;
-  border-radius: 5px;
+  height: 97%;
+  width: 97%;
+  background-color: #a12020;
   margin: 10px;
+  border-radius: 10px;
 }
-
 
 @media screen and (max-width: 768px) {
   .container {
@@ -74,22 +75,6 @@ body {
 
 /* grid layout */
 /* Define the grid layout */
-.card-container {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 0.2%;
-  height: 100%;
-  width: 100%;
-  background-color: #bf8383;
-}
-
-/* Style the cards */
-.card {
-  height: 97%;
-  width: 97%;
-  background-color: #a12020;
-  border-radius: 10px;
-}
 
 /* Media query for screens larger than 768px */
 @media screen and (min-width: 768px) {
