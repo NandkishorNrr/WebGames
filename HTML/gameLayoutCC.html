@@ -1,34 +1,42 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>Chor-Chitthi | NrrWebGames</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/CSS/gameLayoutStyle.css" />
     <link rel="stylesheet" href="/CSS/style.css" />
-    <script src="/JS/gameLayoutScript.js"></script>
+    <script src="/JS/chorChithiScript.js"></script>
+    <title>Chor-Chitthi | NrrWebGames</title>
   </head>
   <body>
     <div class="container">
       <div class="left-container">
         <button class="button draw-button">Draw</button>
         <!-- <button class="button new-game-button">New Game</button> -->
-        <button class="button new-game-button" onclick="displayPage()">
-          New Game
-        </button>
-
+        <!-- <button class="button new-game-button" onclick="displayPage()">New Game</button> -->
+        <button onclick="newGame()">New Games</button>
         <button class="button end-game-button">End Game</button>
       </div>
       <div class="middle-container">
-        <div class="card-container">
-          <div class="card"></div>
-          <div class="card"></div>
-          <div class="card"></div>
-          <div class="card"></div>
+        <div class="card-container cardContainer">
+          <div class="card" id="card1"></div>
+          <div class="card" id="card2"></div>
+          <div class="card" id="card3"></div>
+          <div class="card" id="card4"></div>
         </div>
       </div>
       <div class="right-container">
-        
+        <h2>Information Container</h2>
+        <div id="info"></div>
+        <!-- <button onclick="showData()">Show Data</button> -->
+        <script>
+          window.onload = function () {
+            // Call your function here
+            showData();
+          };
+        </script>
       </div>
     </div>
-    <script src="script.js"></script>
   </body>
 </html>

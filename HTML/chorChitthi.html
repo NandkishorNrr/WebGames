@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Form Example</title>
     <link rel="stylesheet" href="/CSS/style.css" />
-    <title>Chor-Chitthi | NrrWebGames</title>
+    <link rel="stylesheet" href="/CSS/myStyle.css" />
     <link rel="stylesheet" href="/CSS/enterNameForm.css" />
+    <script src="/JS/chorChithiScript.js"></script>
   </head>
   <body>
     <nav>
@@ -17,9 +18,7 @@
       <h1>Welcome to Chor-Chitthi</h1>
       <p>Get ready to have some fun with our awesome web game!</p>
     </header>
-
     <section>
-      <h2>Enter playes name!</h2>
       <form action="#" method="post">
         <label for="player1">Player 1:</label><br />
         <input type="text" id="player1" name="player1" required /><br /><br />
@@ -29,11 +28,10 @@
         <input type="text" id="player3" name="player3" required /><br /><br />
         <label for="player4">Player 4:</label><br />
         <input type="text" id="player4" name="player4" required /><br /><br />
-        <!-- <input type="submit" value="Start Game"> -->
-        <a href="/HTML/gameLayoutCC.html" class="btn">Start</a>
+        <input type="button" value="Start" class="btn" onclick="submitForm()" />
       </form>
-      <!-- note working -->
     </section>
+    <a href="/HTML/gameLayoutCC.html">gameLayoutCC</a>
     <footer>
       <p>Copyright &copy; 2023 Web Game Name</p>
     </footer>
