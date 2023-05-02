@@ -6,8 +6,8 @@ const characters = ["Raja", "Mantri", "Sipai", "Chor"];
 // Create the value array with initial values
 const values = [1000, 500, 300, 0];
 
-// Create the score array with initial values of 0
-const scores = [0, 0, 0, 0];
+// Get the scores from local storage or initialize with four zeros
+let scores = JSON.parse(localStorage.getItem('scores')) || [0, 0, 0, 0];
 
 function submitForm() {
   // Get the form players
@@ -36,19 +36,19 @@ function showData() {
 
   // Update the information container
   let cardContainer1 = document.getElementById('card1');
-  let card1 = '<h1>' + playesData[0].player1 + '</h1>';
+  let card1 = '<h2>' + playesData[0].player1 + '</h2>' + '<hr>';
   cardContainer1.innerHTML = card1;
 
   let cardContainer2 = document.getElementById('card2');
-  let card2 = '<h1>' + playesData[0].player2 + '</h1>';
+  let card2 = '<h2>' + playesData[0].player2 + '</h2>' + '<hr>';
   cardContainer2.innerHTML = card2;
 
   let cardContainer3 = document.getElementById('card3');
-  let card3 = '<h1>' + playesData[0].player3 + '</h1>';
+  let card3 = '<h2>' + playesData[0].player3 + '</h2>' + '<hr>';
   cardContainer3.innerHTML = card3;
 
   let cardContainer4 = document.getElementById('card4');
-  let card4 = '<h1>' + playesData[0].player4 + '</h1>';
+  let card4 = '<h2>' + playesData[0].player4 + '</h2>' + '<hr>';
   cardContainer4.innerHTML = card4;
 }
 
@@ -56,6 +56,9 @@ function eraseData() {
   // Clear the players array and local storage
   players = [];
   localStorage.removeItem('players');
+
+  scores = [];
+  localStorage.removeItem('scores');
 
   // Update the information container
   let container = document.getElementById('info');
@@ -95,28 +98,52 @@ function draw() {
 
   // Update the information container
   let cardContainer1 = document.getElementById('card1');
-  let card1 = '<h1>' + playesData[0].player1 + '</h1>'
+  let infoContainer = document.getElementById('info');
+
+  let info = '<h2>' + playesData[0].player1 + '</h2>'
+    + '<h3> Score: ' + scores[0] + '</h3>' + '<hr>' +
+
+   '<h2>' + playesData[0].player2 + '</h2>'
+    + '<h3> Score: ' + scores[1] + '</h3>' + '<hr>' +
+
+   '<h2>' + playesData[0].player3 + '</h2>'
+    + '<h3> Score: ' + scores[2] + '</h3>' + '<hr>' +
+
+   '<h2>' + playesData[0].player4 + '</h2>'
+    + '<h3> Score: ' + scores[3] + '</h3>' + '<hr>' 
+;
+
+  infoContainer.innerHTML = info;
+
+  scores[0] = scores[0] + values[numbers[0]];
+  let card1 = '<h2>' + playesData[0].player1 + '</h2>' + '<hr>'
     + '<h1>' + characters[numbers[0]] + '</h1>'
-    + '<h1>' + values[numbers[0]] + '</h1>';;
+    + '<h1>' + values[numbers[0]] + '</h1>';
   cardContainer1.innerHTML = card1;
 
   let cardContainer2 = document.getElementById('card2');
-  let card2 = '<h1>' + playesData[0].player2 + '</h1>'
+
+  scores[1] = scores[1] + values[numbers[1]];
+  let card2 = '<h2>' + playesData[0].player2 + '</h2>' + '<hr>'
     + '<h1>' + characters[numbers[1]] + '</h1>'
-    + '<h1>' + values[numbers[1]] + '</h1>';;
+    + '<h1>' + values[numbers[1]] + '</h1>';
   cardContainer2.innerHTML = card2;
 
   let cardContainer3 = document.getElementById('card3');
-  let card3 = '<h1>' + playesData[0].player3 + '</h1>'
+  scores[2] = scores[2] + values[numbers[2]];
+  let card3 = '<h2>' + playesData[0].player3 + '</h2>' + '<hr>'
     + '<h1>' + characters[numbers[2]] + '</h1>'
-    + '<h1>' + values[numbers[2]] + '</h1>';;
+    + '<h1>' + values[numbers[2]] + '</h1>';
   cardContainer3.innerHTML = card3;
 
   let cardContainer4 = document.getElementById('card4');
-  let card4 = '<h1>' + playesData[0].player4 + '</h1>'
+  scores[3] = scores[3] + values[numbers[3]];
+  let card4 = '<h2>' + playesData[0].player4 + '</h2>' + '<hr>'
     + '<h1>' + characters[numbers[3]] + '</h1>'
-    + '<h1>' + values[numbers[3]] + '</h1>';;
+    + '<h1>' + values[numbers[3]] + '</h1>';
   cardContainer4.innerHTML = card4;
+
+  localStorage.setItem('scores', JSON.stringify(scores));
 }
 // generate rendom UniqueRandomNumbers
 
@@ -130,6 +157,5 @@ function getUniqueRandomNumbers(count) {
     result.push(number - 1);
     numbers.splice(randomIndex, 1);
   }
-
   return result;
 }
