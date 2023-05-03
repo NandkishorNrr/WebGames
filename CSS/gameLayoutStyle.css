@@ -121,7 +121,15 @@ div .card:hover {
 }
 
 
-
-
-
-
+/* counter h1  */
+#counter-container {
+  background-color: rgb(52, 9, 9);
+  color: rgb(232, 220, 180);
+  text-align: center;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px rgb(214, 155, 155);
+  font-size: 350%;
+  font-weight: bold;
+  text-shadow: 2px 2px #555;
+}

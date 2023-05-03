@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ScorrBoard | WebGames</title>
+    <title>Game Score Board</title>
+    <link rel="stylesheet" type="text/css" href="/CSS/scoreBoardStyle.css" />
     <link rel="stylesheet" href="/CSS/style.css" />
-    <link rel="stylesheet" type="text/css" href="/CSS/gameLayoutStyle.css" />
-    <script src="/JS/gameLayout.js"></script>
+    <script src="/JS/chorChithiScript.js"></script>
   </head>
-
   <body>
     <nav>
       <a href="/index.html" target="">Home</a>
@@ -15,94 +14,47 @@
       <a href="/HTML/contact.html">Contact</a>
     </nav>
     <div class="container">
-      <div class="left-top">
-        <h2>Player Information</h2>
-        <p>Player name: John Doe</p>
-        <p>Score: 100</p>
-        <h2>Player Information</h2>
-        <p>Player name: John Doe</p>
-        <p>Score: 100</p>
-        <h2>Player Information</h2>
-        <p>Player name: John Doe</p>
-        <p>Score: 100</p>
-        <h2>Player Information</h2>
-        <p>Player name: John Doe</p>
-        <p>Score: 100</p>
-      </div>
-      <div class="left-bottom">
-        <h2>Controls</h2>
-
-        <div class="button-container">
-          <button>Draw</button>
-          <a href="/HTML/games.html" class="btn"
-            ><button id="newGameBtn">New Games</button></a
-          >
-          <button class="centered-button">End Game</button>
-        </div>
-      </div>
-      <div class="right-side">
-        <h1>Game Display</h1>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias eum
-          quia facilis perspiciatis similique nam quibusdam architecto dicta.
-          Numquam voluptatum hic quia. Quo, beatae nulla. Facere cumque ea,
-          neque et quam tenetur. Minus, quasi distinctio. Explicabo illo numquam
-          quo iusto animi quas dolores, ea est, voluptate quisquam praesentium
-          ex, repellendus recusandae perferendis soluta ad exercitationem
-          assumenda ullam. Veniam blanditiis deleniti quod error laudantium
-          reiciendis, doloribus alias corrupti, excepturi labore vitae molestias
-          et ad. Officiis reiciendis recusandae dolore maxime eligendi. Dolore
-          nisi nesciunt consequatur eos deleniti incidunt, ad vero nostrum!
-          Dolore nostrum, ipsum atque suscipit explicabo voluptatem amet modi
-          accusantium ullam quod quaerat. Libero voluptates repudiandae tenetur
-          in dolores, at labore quibusdam maiores eaque quaerat, eligendi
-          consectetur accusamus voluptate officia officiis vitae consequatur ea
-          placeat dignissimos. Eaque, distinctio similique delectus officia
-          incidunt culpa, laborum vitae animi magnam debitis itaque amet totam
-          excepturi deleniti facilis quas! Minima corporis autem modi magnam
-          odio quis, ducimus hic quia eligendi minus reiciendis expedita, ad cum
-          officiis accusamus saepe cumque, aut suscipit ab harum? Asperiores
-          tempora cum reiciendis neque dicta vitae voluptate porro vero earum
-          sint distinctio quod, odit debitis saepe nemo possimus aperiam!
-          Nostrum at ut modi ea, aperiam omnis natus incidunt commodi itaque
-          dolore vero a veniam excepturi nobis esse tenetur similique aut dolor
-          eveniet aliquid recusandae facere eligendi. Eius tempore magni numquam
-          accusamus at. Incidunt error fugit aut atque architecto sunt
-          necessitatibus saepe adipisci ipsa eveniet, et laboriosam, rerum
-          expedita sit explicabo? Excepturi libero aperiam explicabo beatae?
-          Nulla corrupti expedita laborum doloremque enim voluptatum consequatur
-          voluptatem laudantium unde at! Labore dolorum reprehenderit doloremque
-          perspiciatis repudiandae error commodi tempore, quo explicabo!
-          Nostrum, suscipit. Iusto ex, odit vel at voluptas veritatis dolore
-          molestias natus ab corrupti deleniti omnis maxime blanditiis nisi
-          dolores tenetur possimus obcaecati praesentium laudantium cupiditate
-          nihil quam animi maiores. Totam explicabo ratione quo nulla,
-          asperiores blanditiis assumenda fugit, cum consectetur fugiat velit
-          est labore deserunt quae, ducimus doloremque! Laboriosam, distinctio
-          labore ab quis excepturi fugiat dolor dolorem odio nisi iste soluta
-          eos tempora praesentium id consequuntur suscipit possimus. Dolorem a
-          sequi repellendus rerum laborum debitis magnam, expedita aspernatur
-          illo repellat nam nesciunt? Cumque laudantium numquam fugiat non!
-          Dolorem similique quam quo neque ratione nemo debitis inventore.
-          Consequatur obcaecati fugiat officia tenetur tempore laboriosam nam
-          nemo perspiciatis sint, placeat facilis explicabo, adipisci pariatur
-          dicta culpa possimus ad ducimus quam ex nihil harum impedit eos. Vitae
-          distinctio quasi aliquid est reprehenderit explicabo ducimus
-          dignissimos consequatur, maiores animi fugit, perspiciatis sunt
-          impedit laboriosam minima corrupti voluptates iure! Eligendi esse eos
-          illo quis odio saepe. Reprehenderit libero minus adipisci commodi
-          beatae exercitationem blanditiis numquam perferendis, enim quam
-          delectus labore porro inventore officia pariatur perspiciatis
-          accusantium expedita consectetur rem! Dolore eum, tenetur repellendus
-          ullam molestias modi quia debitis laudantium aliquid! Officia maiores
-          laboriosam hic sit pariatur quibusdam aperiam dolore cupiditate
-          voluptatem amet ratione, recusandae enim laudantium excepturi illo
-          nobis labore quaerat blanditiis quam eligendi provident dicta,
-          distinctio perferendis. Quidem incidunt illum, fugiat voluptas
-          pariatur, at ipsum itaque eos deserunt quod dolorem vel dolore alias
-          iusto, consequuntur similique!
-        </p>
-      </div>
+      <h1>Game Score Board</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Player Name</th>
+            <th>Score</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td id="first-player">John</td>
+            <td id="first-score">1000</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td id="second-player">Jane</td>
+            <td id="second-score">500</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td id="thired-player">Bob</td>
+            <td id="thired-score">300</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td id="forth-player">Bob</td>
+            <td id="forth-score">0</td>
+          </tr>
+        </tbody>
+      </table>
+      <script>
+        window.onload = function () {
+          showScoreBoard();
+        };
+      </script><br><hr>
+      <button onclick="scoreBoardDone()" class="btn">Done</button>
     </div>
+    <footer>
+      <p>Copyright &copy; 2023 Web Game Name</p>
+    </footer>
   </body>
 </html>

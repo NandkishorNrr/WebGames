@@ -12,11 +12,8 @@
   <body>
     <div class="container">
       <div class="left-container">
-        <button class="button draw-button" onclick="draw()">Draw</button>
-        <!-- <button class="button new-game-button">New Game</button> -->
-        <!-- <button class="button new-game-button" onclick="displayPage()">New Game</button> -->
         <button onclick="newGame()">New Games</button>
-        <button class="button end-game-button">End Game</button>
+        <button onclick="endGame()">End Game</button>
       </div>
       <div class="middle-container">
         <div class="card-container cardContainer">
@@ -27,8 +24,12 @@
         </div>
       </div>
       <div class="right-container">
+        <h1 id="counter-container">Counter</h1>
+
         <h2>Score-Board</h2>
-        <div id="info"></div>
+        <div id="info">
+          <button class="button draw-button" onclick="draw()">Draw</button>
+        </div>
         <!-- <button onclick="showData()">Show Data</button> -->
         <script>
           window.onload = function () {
