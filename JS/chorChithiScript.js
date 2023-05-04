@@ -85,10 +85,10 @@ function submitForm() {
 
 function showData() {
   // Update the information container
-  document.getElementById('card1HI').innerHTML = '<h2>' + players[0] + '</h2>' + '<hr>';;
-  document.getElementById('card2HI').innerHTML = '<h2>' + players[1] + '</h2>' + '<hr>';
-  document.getElementById('card3HI').innerHTML = '<h2>' + players[2] + '</h2>' + '<hr>';
-  document.getElementById('card4HI').innerHTML = '<h2>' + players[3] + '</h2>' + '<hr>';;
+  document.getElementById('card1HI').innerHTML = '<h2>' + players[0] + '</h2>';
+  document.getElementById('card2HI').innerHTML = '<h2>' + players[1] + '</h2>';
+  document.getElementById('card3HI').innerHTML = '<h2>' + players[2] + '</h2>';
+  document.getElementById('card4HI').innerHTML = '<h2>' + players[3] + '</h2>';
 }
 
 // eraseData 
@@ -167,8 +167,12 @@ function draw() {
   // random index array
   const numbers = getUniqueRandomNumbers(4);
 
-  let chor = 2;
-  let sipai = 3;
+  // get chor sipai indices
+  // const indices = getChorSipai(numbers);
+
+  // const chorSipaiIndices = chorSipaiIndices(arr);
+  let chor = 1;
+  let sipai = 4;
 
   // set cho sipai IDs
   setChorSipaiIDs(chor, sipai);
@@ -187,23 +191,23 @@ function draw() {
   // update informain in heading and conatens
 
   scores[0] = scores[0] + values[numbers[0]];
-  document.getElementById('card1HI').innerHTML = '<h2>' + players[0] + '</h2>' + '<hr>';
+  document.getElementById('card1HI').innerHTML = '<h2>' + players[0] + '</h2>';
   document.getElementById('card1CI').innerHTML = '<h1>' + characters[numbers[0]] + '</h1>'
     + '<h1>' + values[numbers[0]] + '</h1>';
 
   scores[1] = scores[1] + values[numbers[1]];
-  document.getElementById('card2HI').innerHTML = '<h2>' + players[1] + '</h2>' + '<hr>';
+  document.getElementById('card2HI').innerHTML = '<h2>' + players[1] + '</h2>';
   document.getElementById('card2CI').innerHTML = '<h1>' + characters[numbers[1]] + '</h1>'
     + '<h1>' + values[numbers[1]] + '</h1>';
 
 
   scores[2] = scores[2] + values[numbers[2]];
-  document.getElementById('card3HI').innerHTML = '<h2>' + players[2] + '</h2>' + '<hr>';
+  document.getElementById('card3HI').innerHTML = '<h2>' + players[2] + '</h2>';
   document.getElementById('card3CI').innerHTML = '<h1>' + characters[numbers[2]] + '</h1>'
     + '<h1>' + values[numbers[2]] + '</h1>';
 
   scores[3] = scores[3] + values[numbers[3]];
-  document.getElementById('card4HI').innerHTML = '<h2>' + players[2] + '</h2>' + '<hr>';
+  document.getElementById('card4HI').innerHTML = '<h2>' + players[2] + '</h2>';
   document.getElementById('card4CI').innerHTML = '<h1>' + characters[numbers[3]] + '</h1>'
     + '<h1>' + values[numbers[3]] + '</h1>';
 
@@ -249,13 +253,13 @@ function getUniqueRandomNumbers(count) {
 }
 
 // find chor and sipai
-function findChorSipai(numbers) {
-  const chorSipai = [];
-  chorSipai[0] = "card" + numbers.indexOf(3);
-  chorSipai[1] = "card" + numbers.indexOf(2);
-
-  return chorSipai;
+function getChorSipai(numbers) {
+  const indices = [];
+  indices.push(numbers.indexOf(2));
+  indices.push(numbers.indexOf(3));
+  return indices;
 }
+
 
 // rank of players
 function getRankIndices() {
