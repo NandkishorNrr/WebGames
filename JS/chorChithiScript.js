@@ -13,11 +13,34 @@ let scores = JSON.parse(localStorage.getItem('scores')) || [0, 0, 0, 0];
 // Check if the counter value is already stored in localStorage
 let counter = parseInt(localStorage.getItem('counter')) || 1;
 
+// Unique Random Numbers (4)
+const numbers = [];
+
+// chor sipai index
+const chorSipaiIndex = [];
+
+// chor heading and cotent ID
+chorH = " ";
+chorC = " ";
+
+// sipai heading and cotent ID
+sipaiH = " ";
+sipaiC = " ";
+
 // Update the counter value and store it in localStorage
 function incrementCounter() {
   counter++;
   localStorage.setItem('counter', counter);
   // updateCounterDisplay();
+}
+
+function setChorSipaiIDs(chorID, sipaiID) {
+  chorH = "card" + chorID + "HI";
+  chorC = "card" + chorID + "CI";
+
+  // sipai heading and cotent ID
+  sipaiH = "card" + sipaiID + "HI";
+  sipaiC = "card" + sipaiID + "CI";
 }
 
 
@@ -61,25 +84,13 @@ function submitForm() {
 }
 
 function showData() {
-  // Get the players from local storage
-
   // Update the information container
-  let cardContainer1 = document.getElementById('card1');
-  let card1 = '<h2>' + players[0] + '</h2>' + '<hr>';
-  cardContainer1.innerHTML = card1;
-
-  let cardContainer2 = document.getElementById('card2');
-  let card2 = '<h2>' + players[1] + '</h2>' + '<hr>';
-  cardContainer2.innerHTML = card2;
-
-  let cardContainer3 = document.getElementById('card3');
-  let card3 = '<h2>' + players[2] + '</h2>' + '<hr>';
-  cardContainer3.innerHTML = card3;
-
-  let cardContainer4 = document.getElementById('card4');
-  let card4 = '<h2>' + players[3] + '</h2>' + '<hr>';
-  cardContainer4.innerHTML = card4;
+  document.getElementById('card1HI').innerHTML = '<h2>' + players[0] + '</h2>' + '<hr>';;
+  document.getElementById('card2HI').innerHTML = '<h2>' + players[1] + '</h2>' + '<hr>';
+  document.getElementById('card3HI').innerHTML = '<h2>' + players[2] + '</h2>' + '<hr>';
+  document.getElementById('card4HI').innerHTML = '<h2>' + players[3] + '</h2>' + '<hr>';;
 }
+
 // eraseData 
 function eraseData() {
   // Clear the players array and local storage
@@ -156,11 +167,14 @@ function draw() {
   // random index array
   const numbers = getUniqueRandomNumbers(4);
 
-  // hide chor sipai
-  // hideChorSipai(numbers);
-  // const chorSipaiID = findChorSipai(numbers);
+  let chor = 2;
+  let sipai = 3;
 
-  // document.getElementById(chorSipaiID[0]).style.display = "non";
+  // set cho sipai IDs
+  setChorSipaiIDs(chor, sipai);
+
+  // hide by default chor sipai and show on click
+  hideNshowChorSipai();
 
   // increase counter by 1
   document.getElementById('counter-container').innerHTML = counter + " / 4";
@@ -170,49 +184,53 @@ function draw() {
     endGame();
   }
 
+  // update informain in heading and conatens
 
-  // Update the information container
-  let cardContainer1 = document.getElementById('card1');
   scores[0] = scores[0] + values[numbers[0]];
-  let card1 = '<h2>' + players[0] + '</h2>' + '<hr>'
-    + '<h1>' + characters[numbers[0]] + '</h1>'
+  document.getElementById('card1HI').innerHTML = '<h2>' + players[0] + '</h2>' + '<hr>';
+  document.getElementById('card1CI').innerHTML = '<h1>' + characters[numbers[0]] + '</h1>'
     + '<h1>' + values[numbers[0]] + '</h1>';
-  cardContainer1.innerHTML = card1;
-
-  let cardContainer2 = document.getElementById('card2');
 
   scores[1] = scores[1] + values[numbers[1]];
-  let card2 = '<h2>' + players[1] + '</h2>' + '<hr>'
-    + '<h1>' + characters[numbers[1]] + '</h1>'
+  document.getElementById('card2HI').innerHTML = '<h2>' + players[1] + '</h2>' + '<hr>';
+  document.getElementById('card2CI').innerHTML = '<h1>' + characters[numbers[1]] + '</h1>'
     + '<h1>' + values[numbers[1]] + '</h1>';
-  cardContainer2.innerHTML = card2;
 
-  let cardContainer3 = document.getElementById('card3');
+
   scores[2] = scores[2] + values[numbers[2]];
-  let card3 = '<h2>' + players[2] + '</h2>' + '<hr>'
-    + '<h1>' + characters[numbers[2]] + '</h1>'
+  document.getElementById('card3HI').innerHTML = '<h2>' + players[2] + '</h2>' + '<hr>';
+  document.getElementById('card3CI').innerHTML = '<h1>' + characters[numbers[2]] + '</h1>'
     + '<h1>' + values[numbers[2]] + '</h1>';
-  cardContainer3.innerHTML = card3;
 
-  let cardContainer4 = document.getElementById('card4');
   scores[3] = scores[3] + values[numbers[3]];
-  let card4 = '<h2>' + players[3] + '</h2>' + '<hr>'
-    + '<h1>' + characters[numbers[3]] + '</h1>'
+  document.getElementById('card4HI').innerHTML = '<h2>' + players[2] + '</h2>' + '<hr>';
+  document.getElementById('card4CI').innerHTML = '<h1>' + characters[numbers[3]] + '</h1>'
     + '<h1>' + values[numbers[3]] + '</h1>';
-  cardContainer4.innerHTML = card4;
+
 
   localStorage.setItem('scores', JSON.stringify(scores));
-  document.getElementById("card3").style.display = "non";
+  // document.getElementById("card3").style.display = "non";
   incrementCounter()
 }
 
-// hide chor sipai
-function hideChorSipai(numbers) {
-  const chorSipaiID = findChorSipai(numbers);
+// hide chor and sipai
+function hideNshowChorSipai() {
 
-  document.getElementById(chorSipaiID[0]).style.display = "non";
-  document.getElementById(chorSipaiID[1]).style.display = "non";
+  // hide chor and sipai content
+  document.getElementById(chorC).style.display = "none";
+  document.getElementById(sipaiC).style.display = "none";
 
+  // Add click event listeners to card1HI and card2HI
+  document.getElementById(chorH).addEventListener("click", showChorSipai);
+  document.getElementById(sipaiH).addEventListener("click", showChorSipai);
+};
+
+//  show chor and sipai
+
+function showChorSipai() {
+  // show card1CI card2CI 
+  document.getElementById(chorC).style.display = "block";
+  document.getElementById(sipaiC).style.display = "block";
 }
 
 // generate rendom UniqueRandomNumbers
