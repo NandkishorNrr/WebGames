@@ -16,24 +16,98 @@
 }
 
 table {
-    margin-top: 20px;
-}
-
-h1 {
-    font-size: xx-large;
-    font-weight: bolder;
+    border-collapse: collapse;
+    width: 80%;
+    /* Change this to adjust the table's width */
+    margin: auto;
+    /* Centers the table on the page */
+    border-radius: 10px;
+    /* Adds rounded corners to the table */
+    overflow: hidden;
+    /* Hides any content that exceeds the table's dimensions */
 }
 
 th,
 td {
     padding: 10px;
-    font-weight: bolder;
-    font-size: large;
+    text-align: left;
+    border: 1px solid #ddd;
+    /* Adds a border to each cell */
 }
 
 th {
+    background-color: rgb(52, 9, 9);
+    color: rgb(232, 220, 180);
+    /* Adds a light gray background color to the table header */
+}
 
-    background-color: rgb(232, 220, 180);
-    color: rgb(52, 9, 9);
-    font-size: x-large;
+tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#first-player,
+#second-player,
+#thired-player,
+#forth-player {
+    font-weight: bold;
+}
+
+#first-score,
+#second-score,
+#thired-score,
+#forth-score {
+    text-align: center;
+}
+
+tbody tr:hover {
+    background-color: #f5f5f5;
+}
+
+td#first-player,
+td#second-player,
+td#thired-player,
+td#forth-player {
+    font-weight: bold;
+}
+
+td#first-score,
+td#second-score,
+td#thired-score,
+td#forth-score {
+    font-style: italic;
+}
+
+td {
+    border-right: 2px solid  rgb(52, 9, 9);;
+    border-bottom: 2px solid rgb(52, 9, 9);;
+}
+
+td:last-child {
+    border-right: none;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+table:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+
+
+#first-player,
+#second-player,
+#thired-player,
+#forth-player {
+    font-weight: bold;
+    /* Makes the player names bold */
+}
+
+#first-score,
+#second-score,
+#thired-score,
+#forth-score {
+    color: rgb(52, 9, 9);;
+    /* Makes the scores blue */
 }

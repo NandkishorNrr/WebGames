@@ -53,7 +53,12 @@ body {
   border: 5px solid rgb(52, 9, 9);
   color: rgb(52, 9, 9);
   text-align: center;
+}
 
+.cardC {
+  height: 80%;
+  background-color: #eaa2a2;
+  border: 0;
 }
 
 .card h2 {

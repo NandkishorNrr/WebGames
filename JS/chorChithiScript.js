@@ -1,9 +1,6 @@
 // Check if there is any players in local storage
 let players = JSON.parse(localStorage.getItem('players')) || [];
 
-// Get the players from local storage
-let playesData = JSON.parse(localStorage.getItem('players')) || [];
-
 // Create the players array with initial values
 const characters = ["Raja", "Mantri", "Sipai", "Chor"];
 
@@ -14,7 +11,7 @@ const values = [1000, 500, 300, 0];
 let scores = JSON.parse(localStorage.getItem('scores')) || [0, 0, 0, 0];
 
 // Check if the counter value is already stored in localStorage
-let counter = parseInt(localStorage.getItem('counter')) || 0;
+let counter = parseInt(localStorage.getItem('counter')) || 1;
 
 // Update the counter value and store it in localStorage
 function incrementCounter() {
@@ -47,14 +44,14 @@ function eraseData() {
 function submitForm() {
 
   // Get the form players
-  let player1 = document.getElementById('player1').value;
-  let player2 = document.getElementById('player2').value;
-  let player3 = document.getElementById('player3').value;
-  let player4 = document.getElementById('player4').value;
+  players[0] = document.getElementById('player1').value;
+  players[1] = document.getElementById('player2').value;
+  players[2] = document.getElementById('player3').value;
+  players[3] = document.getElementById('player4').value;
 
 
   // Add the players to the array
-  players.push({ player1: player1, player2: player2, player3: player3, player4: player4 });
+  players.push({ player1: players[0], player2: players[1], player3: players[2], player4: players[3] });
 
   // Save the players to local storage
   localStorage.setItem('players', JSON.stringify(players));
@@ -68,19 +65,19 @@ function showData() {
 
   // Update the information container
   let cardContainer1 = document.getElementById('card1');
-  let card1 = '<h2>' + playesData[0].player1 + '</h2>' + '<hr>';
+  let card1 = '<h2>' + players[0] + '</h2>' + '<hr>';
   cardContainer1.innerHTML = card1;
 
   let cardContainer2 = document.getElementById('card2');
-  let card2 = '<h2>' + playesData[0].player2 + '</h2>' + '<hr>';
+  let card2 = '<h2>' + players[1] + '</h2>' + '<hr>';
   cardContainer2.innerHTML = card2;
 
   let cardContainer3 = document.getElementById('card3');
-  let card3 = '<h2>' + playesData[0].player3 + '</h2>' + '<hr>';
+  let card3 = '<h2>' + players[2] + '</h2>' + '<hr>';
   cardContainer3.innerHTML = card3;
 
   let cardContainer4 = document.getElementById('card4');
-  let card4 = '<h2>' + playesData[0].player4 + '</h2>' + '<hr>';
+  let card4 = '<h2>' + players[3] + '</h2>' + '<hr>';
   cardContainer4.innerHTML = card4;
 }
 // eraseData 
@@ -117,17 +114,19 @@ function endGame() {
 }
 
 function showScoreBoard() {
-  document.getElementById("first-player").innerHTML = playesData[0].player1;
-  document.getElementById("first-score").innerHTML = scores[0];
+  const rankIndices = getRankIndices();
 
-  document.getElementById("second-player").innerHTML = playesData[0].player2;
-  document.getElementById("second-score").innerHTML = scores[1];
+  document.getElementById("first-player").innerHTML = players[rankIndices[0]];
+  document.getElementById("first-score").innerHTML = scores[rankIndices[0]];
 
-  document.getElementById("thired-player").innerHTML = playesData[0].player3;
-  document.getElementById("thired-score").innerHTML = scores[2];
+  document.getElementById("second-player").innerHTML = players[rankIndices[1]];
+  document.getElementById("second-score").innerHTML = scores[rankIndices[1]];
 
-  document.getElementById("forth-player").innerHTML = playesData[0].player4;
-  document.getElementById("forth-score").innerHTML = scores[3];
+  document.getElementById("thired-player").innerHTML = players[rankIndices[2]];
+  document.getElementById("thired-score").innerHTML = scores[rankIndices[2]]
+
+  document.getElementById("forth-player").innerHTML = players[rankIndices[3]];
+  document.getElementById("forth-score").innerHTML = scores[rankIndices[3]];
 
   newGame();
 }
@@ -157,10 +156,16 @@ function draw() {
   // random index array
   const numbers = getUniqueRandomNumbers(4);
 
+  // hide chor sipai
+  // hideChorSipai(numbers);
+  // const chorSipaiID = findChorSipai(numbers);
+
+  // document.getElementById(chorSipaiID[0]).style.display = "non";
+
   // increase counter by 1
   document.getElementById('counter-container').innerHTML = counter + " / 4";
 
-// no. of round played
+  // no. of round played
   if (counter >= 5) {
     endGame();
   }
@@ -169,7 +174,7 @@ function draw() {
   // Update the information container
   let cardContainer1 = document.getElementById('card1');
   scores[0] = scores[0] + values[numbers[0]];
-  let card1 = '<h2>' + playesData[0].player1 + '</h2>' + '<hr>'
+  let card1 = '<h2>' + players[0] + '</h2>' + '<hr>'
     + '<h1>' + characters[numbers[0]] + '</h1>'
     + '<h1>' + values[numbers[0]] + '</h1>';
   cardContainer1.innerHTML = card1;
@@ -177,29 +182,39 @@ function draw() {
   let cardContainer2 = document.getElementById('card2');
 
   scores[1] = scores[1] + values[numbers[1]];
-  let card2 = '<h2>' + playesData[0].player2 + '</h2>' + '<hr>'
+  let card2 = '<h2>' + players[1] + '</h2>' + '<hr>'
     + '<h1>' + characters[numbers[1]] + '</h1>'
     + '<h1>' + values[numbers[1]] + '</h1>';
   cardContainer2.innerHTML = card2;
 
   let cardContainer3 = document.getElementById('card3');
   scores[2] = scores[2] + values[numbers[2]];
-  let card3 = '<h2>' + playesData[0].player3 + '</h2>' + '<hr>'
+  let card3 = '<h2>' + players[2] + '</h2>' + '<hr>'
     + '<h1>' + characters[numbers[2]] + '</h1>'
     + '<h1>' + values[numbers[2]] + '</h1>';
   cardContainer3.innerHTML = card3;
 
   let cardContainer4 = document.getElementById('card4');
   scores[3] = scores[3] + values[numbers[3]];
-  let card4 = '<h2>' + playesData[0].player4 + '</h2>' + '<hr>'
+  let card4 = '<h2>' + players[3] + '</h2>' + '<hr>'
     + '<h1>' + characters[numbers[3]] + '</h1>'
     + '<h1>' + values[numbers[3]] + '</h1>';
   cardContainer4.innerHTML = card4;
 
   localStorage.setItem('scores', JSON.stringify(scores));
-
+  document.getElementById("card3").style.display = "non";
   incrementCounter()
 }
+
+// hide chor sipai
+function hideChorSipai(numbers) {
+  const chorSipaiID = findChorSipai(numbers);
+
+  document.getElementById(chorSipaiID[0]).style.display = "non";
+  document.getElementById(chorSipaiID[1]).style.display = "non";
+
+}
+
 // generate rendom UniqueRandomNumbers
 
 function getUniqueRandomNumbers(count) {
@@ -213,4 +228,30 @@ function getUniqueRandomNumbers(count) {
     numbers.splice(randomIndex, 1);
   }
   return result;
+}
+
+// find chor and sipai
+function findChorSipai(numbers) {
+  const chorSipai = [];
+  chorSipai[0] = "card" + numbers.indexOf(3);
+  chorSipai[1] = "card" + numbers.indexOf(2);
+
+  return chorSipai;
+}
+
+// rank of players
+function getRankIndices() {
+
+  // create a copy of the original array and sort it in descending order
+  const sortedscores = [...scores].sort((a, b) => b - a);
+
+  // create a new array to store the indices in descending order
+  const rankscores = new Array(scores.length);
+
+  // loop through the sorted array and find the index of each element in the original array
+  for (let i = 0; i < sortedscores.length; i++) {
+    const index = scores.indexOf(sortedscores[i]);
+    rankscores[i] = index;
+  }
+  return rankscores;
 }
