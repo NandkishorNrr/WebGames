@@ -1,7 +1,7 @@
 // Check if there is any players in local storage
 let players = JSON.parse(localStorage.getItem('players')) || [];
 
-// Create the players array with initial values
+// Create the characters array with initial values
 const characters = ["Raja", "Mantri", "Sipai", "Chor"];
 
 // Create the value array with initial values
@@ -13,19 +13,32 @@ let scores = JSON.parse(localStorage.getItem('scores')) || [0, 0, 0, 0];
 // Check if the counter value is already stored in localStorage
 let counter = parseInt(localStorage.getItem('counter')) || 1;
 
-// Unique Random Numbers (4)
-const numbers = [];
+// const charactersIndices = [0, 1, 2, 3];
+let charactersIndices = [1, 2, 3, 4];
 
-// chor sipai index
-const chorSipaiIndex = [];
+// Unique Random Numbers (4)
+const numbers = [0, 0, 0, 0];
+
+// set character's indices
+let chor;
+let sipai;
+let mantri;
+
 
 // chor heading and cotent ID
-chorH = " ";
-chorC = " ";
+let chorH = " ";
+let chorC = " ";
+
+// mantri heading and cotent ID
+let mantriH = " ";
+let mantriC = " ";
 
 // sipai heading and cotent ID
-sipaiH = " ";
-sipaiC = " ";
+let sipaiH = " ";
+let sipaiC = " ";
+
+// check the click even is chor or not
+let isChor = false;
 
 // Update the counter value and store it in localStorage
 function incrementCounter() {
@@ -34,15 +47,23 @@ function incrementCounter() {
   // updateCounterDisplay();
 }
 
-function setChorSipaiIDs(chorID, sipaiID) {
+function setCharactersIDs(chorID, sipaiID, mantriID) {
+
+  chor = chorID;
+  sipai = sipaiID;
+  mantri = mantriID;
+
   chorH = "card" + chorID + "HI";
   chorC = "card" + chorID + "CI";
 
   // sipai heading and cotent ID
   sipaiH = "card" + sipaiID + "HI";
   sipaiC = "card" + sipaiID + "CI";
-}
 
+  // mantri heading and cotent ID
+  mantriH = "card" + mantriID + "HI";
+  mantriC = "card" + mantriID + "CI";
+}
 
 // Display the current counter value on the webpage
 function updateCounterDisplay() {
@@ -138,7 +159,7 @@ function showScoreBoard() {
 
   document.getElementById("forth-player").innerHTML = players[rankIndices[3]];
   document.getElementById("forth-score").innerHTML = scores[rankIndices[3]];
-
+  
   newGame();
 }
 
@@ -162,34 +183,34 @@ function generateRandomNumbers() {
     outputDiv.innerHTML += randimNums[i] + "<br>";
   }
 }
+
 // throw 
 function draw() {
   // random index array
   const numbers = getUniqueRandomNumbers(4);
 
-  // get chor sipai indices
-  // const indices = getChorSipai(numbers);
+  const charactersIndices = getCharactersIndices(numbers);
 
-  // const chorSipaiIndices = chorSipaiIndices(arr);
-  let chor = 1;
-  let sipai = 4;
+  const chor = charactersIndices[3];
+  const sipai = charactersIndices[2];
+  const mantri = charactersIndices[1];
+
+  // setCharactersIndices(chor, sipai, mantri);
 
   // set cho sipai IDs
-  setChorSipaiIDs(chor, sipai);
+  setCharactersIDs(chor, sipai, mantri);
 
   // hide by default chor sipai and show on click
   hideNshowChorSipai();
-
-  // increase counter by 1
-  document.getElementById('counter-container').innerHTML = counter + " / 4";
 
   // no. of round played
   if (counter >= 5) {
     endGame();
   }
 
-  // update informain in heading and conatens
 
+
+  // update informain in heading and conatens
   scores[0] = scores[0] + values[numbers[0]];
   document.getElementById('card1HI').innerHTML = '<h2>' + players[0] + '</h2>';
   document.getElementById('card1CI').innerHTML = '<h1>' + characters[numbers[0]] + '</h1>'
@@ -207,56 +228,99 @@ function draw() {
     + '<h1>' + values[numbers[2]] + '</h1>';
 
   scores[3] = scores[3] + values[numbers[3]];
-  document.getElementById('card4HI').innerHTML = '<h2>' + players[2] + '</h2>';
+  document.getElementById('card4HI').innerHTML = '<h2>' + players[3] + '</h2>';
   document.getElementById('card4CI').innerHTML = '<h1>' + characters[numbers[3]] + '</h1>'
     + '<h1>' + values[numbers[3]] + '</h1>';
 
+  // check for assigning write result true or not
+  // document.getElementById('isChor').innerHTML = "Your answer is: " + isChor;
 
+  // store cores data in local storage
   localStorage.setItem('scores', JSON.stringify(scores));
-  // document.getElementById("card3").style.display = "non";
-  incrementCounter()
+
+
+  // increase counter by 1
+  document.getElementById('counter-container').innerHTML = counter + " / 4";
+
+  // increment counter after ever draw
+  incrementCounter();
 }
 
+// 
+function isReplyNotTrue() {
+
+  document.getElementById('card1HI').innerHTML = '<h2>' + players[0] + '</h2>';
+
+  if (!isChor) {
+    // if reply is false, action will taken ....
+  }
+}
 // hide chor and sipai
 function hideNshowChorSipai() {
 
   // hide chor and sipai content
   document.getElementById(chorC).style.display = "none";
   document.getElementById(sipaiC).style.display = "none";
+  document.getElementById("isChor").style.display = "none";
+
 
   // Add click event listeners to card1HI and card2HI
-  document.getElementById(chorH).addEventListener("click", showChorSipai);
-  document.getElementById(sipaiH).addEventListener("click", showChorSipai);
+  document.getElementById(chorH).addEventListener("click", function () {
+    // Set isChor to true when chorH is clicked
+    isChor = true;
+    showChorSipai();
+  });
+  document.getElementById(sipaiH).addEventListener("click", function () {
+    // Set isChor to false when sipaiH is clicked
+    isChor = false;
+    showChorSipai();
+  });
+
+
+  // check for assigning write result or not
+  // document.getElementById('isChor').innerHTML = "Your answer is: " + isChor;
 };
 
-//  show chor and sipai
+
+//  show chor and sipai and clicked element chorH
 
 function showChorSipai() {
+
+  // in case reply is false, chor assign mantri scrore and vs
+  isReplyNotTrue();
+
   // show card1CI card2CI 
   document.getElementById(chorC).style.display = "block";
   document.getElementById(sipaiC).style.display = "block";
+  document.getElementById("isChor").style.display = "block";
+
+  // check for assigning write result true or not
+  document.getElementById('isChor').innerHTML = " " + isChor;
 }
+
 
 // generate rendom UniqueRandomNumbers
 
 function getUniqueRandomNumbers(count) {
-  const numbers = [1, 2, 3, 4];
+  const numbers = [0, 1, 2, 3];
   const result = [];
 
   for (let i = 0; i < count; i++) {
     const randomIndex = Math.floor(Math.random() * numbers.length);
     const number = numbers[randomIndex];
-    result.push(number - 1);
+    result.push(number);
     numbers.splice(randomIndex, 1);
   }
   return result;
 }
 
-// find chor and sipai
-function getChorSipai(numbers) {
+// get characters indices
+function getCharactersIndices(num) {
   const indices = [];
-  indices.push(numbers.indexOf(2));
-  indices.push(numbers.indexOf(3));
+  indices[0] = num.indexOf(0) + 1;
+  indices[1] = num.indexOf(1) + 1;
+  indices[2] = num.indexOf(2) + 1;
+  indices[3] = num.indexOf(3) + 1;
   return indices;
 }
 
