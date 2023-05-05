@@ -40,11 +40,17 @@ let sipaiC = " ";
 // check the click even is chor or not
 let isChor = false;
 
+// number of round
+let round = 5;
 // Update the counter value and store it in localStorage
 function incrementCounter() {
-  counter++;
-  localStorage.setItem('counter', counter);
-  // updateCounterDisplay();
+  if (counter < 5) {
+    counter++;
+    localStorage.setItem('counter', counter);
+  }
+  else {
+    counter = 0;
+  }
 }
 
 function setCharactersIDs(chorID, sipaiID, mantriID) {
@@ -204,7 +210,7 @@ function draw() {
   hideNshowChorSipai();
 
   // no. of round played
-  if (counter >= 5) {
+  if (counter > round - 1) {
     endGame();
   }
 
@@ -278,7 +284,7 @@ function hideNshowChorSipai() {
   // hide chor and sipai content
   document.getElementById(chorC).style.display = "none";
   document.getElementById(sipaiC).style.display = "none";
-  document.getElementById("isChor").style.display = "none";
+  // document.getElementById("isChor").style.display = "none";
 
 
   // Add click event listeners to card1HI and card2HI
@@ -309,7 +315,7 @@ function showChorSipai() {
   // show card1CI card2CI 
   document.getElementById(chorC).style.display = "block";
   document.getElementById(sipaiC).style.display = "block";
-  document.getElementById("isChor").style.display = "block";
+  // document.getElementById("isChor").style.display = "block";
 
   // check for assigning write result true or not
   document.getElementById('isChor').innerHTML = " " + isChor;
