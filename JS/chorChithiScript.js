@@ -159,7 +159,7 @@ function showScoreBoard() {
 
   document.getElementById("forth-player").innerHTML = players[rankIndices[3]];
   document.getElementById("forth-score").innerHTML = scores[rankIndices[3]];
-  
+
   newGame();
 }
 
@@ -249,10 +249,27 @@ function draw() {
 // 
 function isReplyNotTrue() {
 
-  document.getElementById('card1HI').innerHTML = '<h2>' + players[0] + '</h2>';
-
   if (!isChor) {
     // if reply is false, action will taken ....
+
+    scores[1] = scores[1] + 500;
+    document.getElementById(chorC).innerHTML = '<h1>' + "CHOR" + '</h1>'
+      + '<h1>' + "500" + '</h1>';
+
+    scores[3] = scores[3] + 0;
+    document.getElementById(mantriC).innerHTML = '<h1>' + "Mantri" + '</h1>'
+      + '<h1>' + "0" + '</h1>';
+  }
+  else {
+    // update informain in heading and conatens
+
+    // scores[1] = scores[1] + values[numbers[1]];
+    // document.getElementById('card2CI').innerHTML = '<h1>' + characters[numbers[1]] + '</h1>'
+    //   + '<h1>' + values[numbers[1]] + '</h1>';
+
+    // scores[3] = scores[3] + values[numbers[3]];
+    // document.getElementById('card4CI').innerHTML = '<h1>' + characters[numbers[3]] + '</h1>'
+    //   + '<h1>' + values[numbers[3]] + '</h1>';
   }
 }
 // hide chor and sipai
