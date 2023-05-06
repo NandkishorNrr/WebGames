@@ -20,39 +20,55 @@
     <div class="middle-container">
       <div class="card-container cardContainer">
         <div class="card" id="card1">
-          <div class="cardH" id="card1HI">Nrr</div>
-          <div class="cardC" id="card1CI"></div>
+          <div class="cardH" id="card1HI">
+            <h2 class="dfltNm"></h2>
+          </div>
+          <div class="cardC" id="card1CI">
+            <h1 class="dfltScr"></h1>
+          </div>
         </div>
         <div class="card" id="card2">
-          <div class="cardH" id="card2HI">Rtr</div>
-          <div class="cardC" id="card2CI"></div>
+          <div class="cardH" id="card2HI">
+            <h2 class="dfltNm"></h2>
+          </div>
+          <div class="cardC" id="card2CI">
+            <h1 class="dfltScr"></h1>
+          </div>
         </div>
         <div class="card" id="card3">
-          <div class="cardH" id="card3HI">Blr</div>
-          <div class="cardC" id="card3CI"></div>
+          <div class="cardH" id="card3HI">
+            <h2 class="dfltNm"></h2>
+          </div>
+          <div class="cardC" id="card3CI">
+            <h1 class="dfltScr"></h1>
+          </div>
         </div>
         <div class="card" id="card4">
-          <div class="cardH" id="card4HI">Lbr</div>
-          <div class="cardC" id="card4CI"></div>
+          <div class="cardH" id="card4HI">
+            <h2 class="dfltNm"></h2>
+          </div>
+          <div class="cardC" id="card4CI">
+            <h1 class="dfltScr"></h1>
+          </div>
         </div>
       </div>
     </div>
     <div class="right-container">
       <h1 id="isChor">?...</h1><br><br>
-      <h1 id="counter-container">Counter</h1>
-      <div id="info"><br>
-        <button class="button draw-button" onclick="draw()">Draw</button>
-      </div>
-      <!-- <button onclick="showData()">Show Data</button> -->
-      <script>
-        window.onload = function () {
-          // Call your function here
-          showData();
-        };
+      <h1 id="counter-container">Counter</h1><br>
+      <button id="drawBtn" class="button" onclick="draw()">Draw</button><br>
+      <button id="scrBtn" class="button" onclick="scoresPage()">Scores</button>
 
-      </script>
     </div>
   </div>
+  <script>
+    window.onload = function () {
+      // Call your function here
+      showData();
+      // do not show all time
+      document.getElementById("scrBtn").style.display = "none";
+    };
+  </script>
 </body>
 
 </html>

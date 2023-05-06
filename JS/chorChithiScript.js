@@ -1,14 +1,15 @@
 // Check if there is any players in local storage
 let players = JSON.parse(localStorage.getItem('players')) || [];
 
+// Get the scores from local storage or initialize with four zeros
+let scores = JSON.parse(localStorage.getItem('scores')) || [0, 0, 0, 0];
+
 // Create the characters array with initial values
 const characters = ["Raja", "Mantri", "Sipai", "Chor"];
 
 // Create the value array with initial values
 const values = [1000, 500, 300, 0];
 
-// Get the scores from local storage or initialize with four zeros
-let scores = JSON.parse(localStorage.getItem('scores')) || [0, 0, 0, 0];
 
 // Check if the counter value is already stored in localStorage
 let counter = parseInt(localStorage.getItem('counter')) || 1;
@@ -22,6 +23,7 @@ const numbers = [0, 0, 0, 0];
 // set character's indices
 let chor;
 let sipai;
+let raja;
 let mantri;
 
 
@@ -37,26 +39,27 @@ let mantriC = " ";
 let sipaiH = " ";
 let sipaiC = " ";
 
+// sipai heading and cotent ID
+let rajaH = " ";
+let rajaC = " ";
+
 // check the click even is chor or not
 let isChor = false;
 
 // number of round
-let round = 5;
+let round = 4;
+
 // Update the counter value and store it in localStorage
 function incrementCounter() {
-  if (counter < 5) {
-    counter++;
-    localStorage.setItem('counter', counter);
-  }
-  else {
-    counter = 0;
-  }
+  counter++;
+  localStorage.setItem('counter', counter);
 }
 
-function setCharactersIDs(chorID, sipaiID, mantriID) {
+function setCharactersIDs(chorID, sipaiID, mantriID, rajaID) {
 
   chor = chorID;
   sipai = sipaiID;
+  raja = rajaID;
   mantri = mantriID;
 
   chorH = "card" + chorID + "HI";
@@ -69,6 +72,10 @@ function setCharactersIDs(chorID, sipaiID, mantriID) {
   // mantri heading and cotent ID
   mantriH = "card" + mantriID + "HI";
   mantriC = "card" + mantriID + "CI";
+
+  // raja heading and cotent ID
+  rajaH = "card" + rajaID + "HI";
+  rajaC = "card" + rajaID + "CI";
 }
 
 // Display the current counter value on the webpage
@@ -77,22 +84,7 @@ function updateCounterDisplay() {
   counterDisplay.innerText = counter;
 }
 
-// eraseData 
-function eraseData() {
-  // Clear the players array and local storage
-  players = [];
-  localStorage.removeItem('players');
-
-  scores = [];
-  localStorage.removeItem('scores');
-
-  // Update the information container
-  let container = document.getElementById('info');
-  container.innerHTML = '';
-}
-
 function submitForm() {
-
   // Get the form players
   players[0] = document.getElementById('player1').value;
   players[1] = document.getElementById('player2').value;
@@ -128,12 +120,8 @@ function eraseData() {
   localStorage.removeItem('scores');
 
   // Reset the counter value and remove it from localStorage
-  counter = 0;
+  counter = 1;
   localStorage.removeItem('counter');
-
-  // Update the information container
-  let container = document.getElementById('info');
-  container.innerHTML = '';
 }
 
 function displayPage() {
@@ -151,6 +139,11 @@ function endGame() {
   window.location.href = "/HTML/scoreBoard.html";
 }
 
+// scores page will
+function scoresPage() {
+  window.location.href = "/HTML/scoreBoard.html";
+}
+
 function showScoreBoard() {
   const rankIndices = getRankIndices();
 
@@ -165,13 +158,11 @@ function showScoreBoard() {
 
   document.getElementById("forth-player").innerHTML = players[rankIndices[3]];
   document.getElementById("forth-score").innerHTML = scores[rankIndices[3]];
-
-  newGame();
 }
 
 //  show games page
 function scoreBoardDone() {
-  // eraseData();
+  eraseData();
   window.location.href = "/HTML/games.html";
 }
 // generating random number
@@ -200,53 +191,45 @@ function draw() {
   const chor = charactersIndices[3];
   const sipai = charactersIndices[2];
   const mantri = charactersIndices[1];
+  const raja = charactersIndices[0];
 
   // setCharactersIndices(chor, sipai, mantri);
 
   // set cho sipai IDs
-  setCharactersIDs(chor, sipai, mantri);
-
-  // hide by default chor sipai and show on click
-  hideNshowChorSipai();
-
-  // no. of round played
-  if (counter > round - 1) {
-    endGame();
-  }
-
-
+  setCharactersIDs(chor, sipai, mantri, raja);
 
   // update informain in heading and conatens
-  scores[0] = scores[0] + values[numbers[0]];
-  document.getElementById('card1HI').innerHTML = '<h2>' + players[0] + '</h2>';
+  // scores[0] = scores[0] + values[numbers[0]];
   document.getElementById('card1CI').innerHTML = '<h1>' + characters[numbers[0]] + '</h1>'
     + '<h1>' + values[numbers[0]] + '</h1>';
 
-  scores[1] = scores[1] + values[numbers[1]];
-  document.getElementById('card2HI').innerHTML = '<h2>' + players[1] + '</h2>';
+  // scores[1] = scores[1] + values[numbers[1]];
   document.getElementById('card2CI').innerHTML = '<h1>' + characters[numbers[1]] + '</h1>'
     + '<h1>' + values[numbers[1]] + '</h1>';
 
 
-  scores[2] = scores[2] + values[numbers[2]];
-  document.getElementById('card3HI').innerHTML = '<h2>' + players[2] + '</h2>';
+  // scores[2] = scores[2] + values[numbers[2]];
   document.getElementById('card3CI').innerHTML = '<h1>' + characters[numbers[2]] + '</h1>'
     + '<h1>' + values[numbers[2]] + '</h1>';
 
-  scores[3] = scores[3] + values[numbers[3]];
-  document.getElementById('card4HI').innerHTML = '<h2>' + players[3] + '</h2>';
+  // scores[3] = scores[3] + values[numbers[3]];
   document.getElementById('card4CI').innerHTML = '<h1>' + characters[numbers[3]] + '</h1>'
     + '<h1>' + values[numbers[3]] + '</h1>';
+
+  // hide by default chor sipai and show on click
+  hideNshowChorSipai();
+  document.getElementById("drawBtn").style.display = "none";
 
   // check for assigning write result true or not
   // document.getElementById('isChor').innerHTML = "Your answer is: " + isChor;
 
-  // store cores data in local storage
-  localStorage.setItem('scores', JSON.stringify(scores));
-
+  // if round completed, hide draw and show scores button
+  if (counter >= round) {
+    document.getElementById("scrBtn").style.display = "block";
+  }
 
   // increase counter by 1
-  document.getElementById('counter-container').innerHTML = counter + " / 4";
+  document.getElementById('counter-container').innerHTML = counter + " / " + round;
 
   // increment counter after ever draw
   incrementCounter();
@@ -256,27 +239,29 @@ function draw() {
 function isReplyNotTrue() {
 
   if (!isChor) {
-    // if reply is false, action will taken ....
+    // if reply, false
 
-    scores[1] = scores[1] + 500;
-    document.getElementById(chorC).innerHTML = '<h1>' + "CHOR" + '</h1>'
-      + '<h1>' + "500" + '</h1>';
+    scores[chor - 1] = scores[chor - 1] + values[1];
+    document.getElementById(chorC).innerHTML = '<h1>' + characters[3] + '</h1>'
+      + '<h1>' + values[1] + '</h1>';
 
-    scores[3] = scores[3] + 0;
-    document.getElementById(mantriC).innerHTML = '<h1>' + "Mantri" + '</h1>'
-      + '<h1>' + "0" + '</h1>';
+    scores[mantri - 1] = scores[mantri - 1] + values[3];
+    document.getElementById(mantriC).innerHTML = '<h1>' + characters[1] + '</h1>'
+      + '<h1>' + values[3] + '</h1>';
   }
+
   else {
-    // update informain in heading and conatens
-
-    // scores[1] = scores[1] + values[numbers[1]];
-    // document.getElementById('card2CI').innerHTML = '<h1>' + characters[numbers[1]] + '</h1>'
-    //   + '<h1>' + values[numbers[1]] + '</h1>';
-
-    // scores[3] = scores[3] + values[numbers[3]];
-    // document.getElementById('card4CI').innerHTML = '<h1>' + characters[numbers[3]] + '</h1>'
-    //   + '<h1>' + values[numbers[3]] + '</h1>';
+    // if reply, true
+    scores[chor - 1] = scores[chor - 1] + values[3];
+    scores[mantri - 1] = scores[mantri - 1] + values[1];
   }
+
+  // adding score or sipai and raja in both case, reply maybe true or not
+  scores[sipai - 1] = scores[sipai - 1] + values[2];
+  scores[raja - 1] = scores[raja - 1] + values[0];
+
+  // store cores data in local storage
+  localStorage.setItem('scores', JSON.stringify(scores));
 }
 // hide chor and sipai
 function hideNshowChorSipai() {
@@ -299,7 +284,6 @@ function hideNshowChorSipai() {
     showChorSipai();
   });
 
-
   // check for assigning write result or not
   // document.getElementById('isChor').innerHTML = "Your answer is: " + isChor;
 };
@@ -315,15 +299,20 @@ function showChorSipai() {
   // show card1CI card2CI 
   document.getElementById(chorC).style.display = "block";
   document.getElementById(sipaiC).style.display = "block";
+  document.getElementById("drawBtn").style.display = "block";
   // document.getElementById("isChor").style.display = "block";
 
   // check for assigning write result true or not
   document.getElementById('isChor').innerHTML = " " + isChor;
+
+
+  // counter = round, hide draw button
+  if (counter >= round + 1) {
+    document.getElementById("drawBtn").style.display = "none";
+  }
 }
 
-
 // generate rendom UniqueRandomNumbers
-
 function getUniqueRandomNumbers(count) {
   const numbers = [0, 1, 2, 3];
   const result = [];

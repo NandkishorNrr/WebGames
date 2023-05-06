@@ -1,4 +1,8 @@
 .container {
+    overflow-x: auto;
+    font-size: 1.2rem;
+    line-height: 1.5;
+    padding: 2rem;
     position: absolute;
     top: 45%;
     left: 50%;
@@ -25,14 +29,25 @@ table {
     /* Adds rounded corners to the table */
     overflow: hidden;
     /* Hides any content that exceeds the table's dimensions */
+    table-layout: fixed;
 }
+
+thead {
+    position: sticky;
+    top: 0;
+    font-weight: bold;
+}
+
 
 th,
 td {
-    padding: 10px;
+
+    padding: 1rem;
+    text-align: center;
     text-align: left;
-    border: 1px solid #ddd;
-    /* Adds a border to each cell */
+    border: 1px solid rgb(52, 9, 9);
+
+    /* padding: 8px; */
 }
 
 th {
@@ -44,6 +59,54 @@ th {
 tbody tr:nth-child(even) {
     background-color: #f2f2f2;
 }
+
+@media only screen and (max-width: 768px) {
+    table {
+        display: block;
+        overflow-x: auto;
+    }
+
+    thead {
+        display: none;
+    }
+
+    td:before {
+        content: attr(data-label);
+        font-weight: bold;
+        display: block;
+        text-align: left;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .container {
+        padding: 1rem;
+        overflow-x: auto;
+    }
+
+    table {
+        width: 100%;
+        font-size: 0.9rem;
+        border-collapse: collapse;
+    }
+
+    th,
+    td {
+        padding: 0.5rem;
+        word-break: break-word;
+    }
+
+    th {
+        background-color: #f1f1f1;
+    }
+
+    td:before {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+    }
+}
+
 
 #first-player,
 #second-player,
@@ -78,8 +141,10 @@ td#forth-score {
 }
 
 td {
-    border-right: 2px solid  rgb(52, 9, 9);;
-    border-bottom: 2px solid rgb(52, 9, 9);;
+    border-right: 2px solid rgb(52, 9, 9);
+    ;
+    border-bottom: 2px solid rgb(52, 9, 9);
+    ;
 }
 
 td:last-child {
@@ -108,6 +173,7 @@ table:hover {
 #second-score,
 #thired-score,
 #forth-score {
-    color: rgb(52, 9, 9);;
+    color: rgb(52, 9, 9);
+    ;
     /* Makes the scores blue */
 }
