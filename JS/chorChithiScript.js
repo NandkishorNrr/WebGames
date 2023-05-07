@@ -260,7 +260,9 @@ function hideNshowChorSipai() {
   // hide chor and sipai content
   document.getElementById(chorC).style.display = "none";
   document.getElementById(sipaiC).style.display = "none";
-  document.getElementById("isChor").style.display = "none";
+  isChor = "0";
+  document.getElementById("isChor").innerHTML = "?...";
+  document.getElementById("isChor").style.display = "block";
 
   // Add click event listeners to card1HI and card2HI
   document.getElementById(chorH).addEventListener("click", function () {
@@ -270,7 +272,6 @@ function hideNshowChorSipai() {
     isReplyNotTrue()
 
     showChorSipai();
-    document.getElementById("isChor").style.display = "block";
   });
 
   document.getElementById(sipaiH).addEventListener("click", function () {
@@ -280,8 +281,6 @@ function hideNshowChorSipai() {
     isReplyNotTrue()
 
     showChorSipai();
-
-    document.getElementById("isChor").style.display = "block";
   });
 
   // check for assigning write result or not
