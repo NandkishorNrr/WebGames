@@ -26,7 +26,6 @@ let sipai;
 let raja;
 let mantri;
 
-
 // chor heading and cotent ID
 let chorH = " ";
 let chorC = " ";
@@ -44,7 +43,7 @@ let rajaH = " ";
 let rajaC = " ";
 
 // check the click even is chor or not
-let isChor = false;
+let isChor = "";
 
 // number of round
 let round = parseInt(localStorage.getItem('round')) || 4;
@@ -85,6 +84,7 @@ function updateCounterDisplay() {
 }
 
 function submitForm() {
+  eraseData();
   // Get the form players
   players[0] = document.getElementById('player1').value;
   players[1] = document.getElementById('player2').value;
@@ -197,31 +197,26 @@ function draw() {
   const mantri = charactersIndices[1];
   const raja = charactersIndices[0];
 
-  // setCharactersIndices(chor, sipai, mantri);
-
   // set cho sipai IDs
   setCharactersIDs(chor, sipai, mantri, raja);
 
   // update informain in heading and conatens
-  // scores[0] = scores[0] + values[numbers[0]];
   document.getElementById('card1CI').innerHTML = '<h1>' + characters[numbers[0]] + '</h1>'
     + '<h1>' + values[numbers[0]] + '</h1>';
 
-  // scores[1] = scores[1] + values[numbers[1]];
   document.getElementById('card2CI').innerHTML = '<h1>' + characters[numbers[1]] + '</h1>'
     + '<h1>' + values[numbers[1]] + '</h1>';
 
-
-  // scores[2] = scores[2] + values[numbers[2]];
   document.getElementById('card3CI').innerHTML = '<h1>' + characters[numbers[2]] + '</h1>'
     + '<h1>' + values[numbers[2]] + '</h1>';
 
-  // scores[3] = scores[3] + values[numbers[3]];
   document.getElementById('card4CI').innerHTML = '<h1>' + characters[numbers[3]] + '</h1>'
     + '<h1>' + values[numbers[3]] + '</h1>';
 
   // hide by default chor sipai and show on click
   hideNshowChorSipai();
+
+  // hide by  draw button after clicked it(it will show on select one of them cards)
   document.getElementById("drawBtn").style.display = "none";
 
   // increase counter by 1
@@ -267,7 +262,6 @@ function hideNshowChorSipai() {
   document.getElementById(sipaiC).style.display = "none";
   document.getElementById("isChor").style.display = "none";
 
-
   // Add click event listeners to card1HI and card2HI
   document.getElementById(chorH).addEventListener("click", function () {
     // Set isChor to true when chorH is clicked
@@ -276,7 +270,9 @@ function hideNshowChorSipai() {
     isReplyNotTrue()
 
     showChorSipai();
+    document.getElementById("isChor").style.display = "block";
   });
+
   document.getElementById(sipaiH).addEventListener("click", function () {
     // Set isChor to false when sipaiH is clicked
     isChor = false;
@@ -284,6 +280,8 @@ function hideNshowChorSipai() {
     isReplyNotTrue()
 
     showChorSipai();
+
+    document.getElementById("isChor").style.display = "block";
   });
 
   // check for assigning write result or not
@@ -303,7 +301,6 @@ function showChorSipai() {
 
   // check for assigning write result true or not
   document.getElementById('isChor').innerHTML = " " + isChor;
-
 
   // counter = round, hide draw button
   if (counter >= round + 1) {
@@ -335,7 +332,6 @@ function getCharactersIndices(num) {
   indices[3] = num.indexOf(3) + 1;
   return indices;
 }
-
 
 // rank of players
 function getRankIndices() {
