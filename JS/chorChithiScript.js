@@ -47,7 +47,7 @@ let rajaC = " ";
 let isChor = false;
 
 // number of round
-let round = 4;
+let round = parseInt(localStorage.getItem('round')) || 4;
 
 // Update the counter value and store it in localStorage
 function incrementCounter() {
@@ -91,6 +91,8 @@ function submitForm() {
   players[2] = document.getElementById('player3').value;
   players[3] = document.getElementById('player4').value;
 
+  round = document.getElementById('noRounds').value;
+  localStorage.setItem('round', round);
 
   // Add the players to the array
   players.push({ player1: players[0], player2: players[1], player3: players[2], player4: players[3] });
@@ -145,6 +147,7 @@ function scoresPage() {
   window.location.href = "/HTML/scoreBoard.html";
 }
 
+// Function to update the table fields
 function showScoreBoard() {
   const rankIndices = getRankIndices();
 
@@ -154,12 +157,13 @@ function showScoreBoard() {
   document.getElementById("second-player").innerHTML = players[rankIndices[1]];
   document.getElementById("second-score").innerHTML = scores[rankIndices[1]];
 
-  document.getElementById("thired-player").innerHTML = players[rankIndices[2]];
-  document.getElementById("thired-score").innerHTML = scores[rankIndices[2]]
+  document.getElementById("third-player").innerHTML = players[rankIndices[2]];
+  document.getElementById("third-score").innerHTML = scores[rankIndices[2]];
 
-  document.getElementById("forth-player").innerHTML = players[rankIndices[3]];
-  document.getElementById("forth-score").innerHTML = scores[rankIndices[3]];
+  document.getElementById("fourth-player").innerHTML = players[rankIndices[3]];
+  document.getElementById("fourth-score").innerHTML = scores[rankIndices[3]];
 }
+
 //  show games page
 function scoreBoardDone() {
   eraseData();
@@ -220,14 +224,6 @@ function draw() {
   hideNshowChorSipai();
   document.getElementById("drawBtn").style.display = "none";
 
-  // check for assigning write result true or not
-  // document.getElementById('isChor').innerHTML = "Your answer is: " + isChor;
-
-  // if round completed, hide draw and show scores button
-  if (counter >= round) {
-    document.getElementById("scrBtn").style.display = "block";
-  }
-
   // increase counter by 1
   document.getElementById('counter-container').innerHTML = counter + " / " + round;
 
@@ -269,18 +265,24 @@ function hideNshowChorSipai() {
   // hide chor and sipai content
   document.getElementById(chorC).style.display = "none";
   document.getElementById(sipaiC).style.display = "none";
-  // document.getElementById("isChor").style.display = "none";
+  document.getElementById("isChor").style.display = "none";
 
 
   // Add click event listeners to card1HI and card2HI
   document.getElementById(chorH).addEventListener("click", function () {
     // Set isChor to true when chorH is clicked
     isChor = true;
+    // save data according to reply is ture or false
+    isReplyNotTrue()
+
     showChorSipai();
   });
   document.getElementById(sipaiH).addEventListener("click", function () {
     // Set isChor to false when sipaiH is clicked
     isChor = false;
+    // save data according to reply is ture or false
+    isReplyNotTrue()
+
     showChorSipai();
   });
 
@@ -293,14 +295,11 @@ function hideNshowChorSipai() {
 
 function showChorSipai() {
 
-  // in case reply is false, chor assign mantri scrore and vs
-  isReplyNotTrue();
-
   // show card1CI card2CI 
   document.getElementById(chorC).style.display = "block";
   document.getElementById(sipaiC).style.display = "block";
   document.getElementById("drawBtn").style.display = "block";
-  // document.getElementById("isChor").style.display = "block";
+  document.getElementById("isChor").style.display = "block";
 
   // check for assigning write result true or not
   document.getElementById('isChor').innerHTML = " " + isChor;
@@ -309,6 +308,7 @@ function showChorSipai() {
   // counter = round, hide draw button
   if (counter >= round + 1) {
     document.getElementById("drawBtn").style.display = "none";
+    document.getElementById("scrBtn").style.display = "block";
   }
 }
 
