@@ -102,6 +102,11 @@ body {
   align-items: center;
 }
 
+.drawImg {
+  max-width: 100%;
+  height: auto;
+}
+
 @media screen and (max-width: 768px) {
   .container {
     flex-direction: column;

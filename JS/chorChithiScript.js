@@ -110,6 +110,7 @@ function showData() {
   document.getElementById('card4HI').innerHTML = '<h2>' + players[3] + '</h2>';
 }
 
+
 // eraseData 
 function eraseData() {
   // Clear the players array and local storage
@@ -159,7 +160,6 @@ function showScoreBoard() {
   document.getElementById("forth-player").innerHTML = players[rankIndices[3]];
   document.getElementById("forth-score").innerHTML = scores[rankIndices[3]];
 }
-
 //  show games page
 function scoreBoardDone() {
   eraseData();
