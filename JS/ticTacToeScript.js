@@ -40,14 +40,10 @@ function checkWin() {
             gameBoard[a[0]][a[1]] === gameBoard[b[0]][b[1]] &&
             gameBoard[a[0]][a[1]] === gameBoard[c[0]][c[1]]
         ) {
-            if (gameBoard[a[0]][a[1]] === 'X') {
-                // document.getElementById('winner').innerHTML = '<h2>' + 'Player ' + players[1] + ' wins!' + '</h2>';
-                alert('Player ' + players[1] + ' wins!');
-
-            }
-            else {
-                // document.getElementById('winner').innerHTML = '<h2>' + 'Player ' + players[0] + ' wins!' + '</h2>';
-                alert('Player ' + players[0] + ' wins!');
+            if (gameBoard[a[0]][a[1]] === "X") {
+                showAlert("" + players[1] + " wins!", "success");
+            } else {
+                showAlert("" + players[0] + " wins!", "success");
             }
 
             resetGame();
@@ -63,11 +59,26 @@ function checkWin() {
     });
 
     if (isTie) {
-        alert('It\'s a tie!');
+        showAlert("It's a tie!", "tie");
         resetGame();
     }
 }
 
+function showAlert(message, className) {
+    var alertOverlay = document.createElement("div");
+    alertOverlay.className = "alert-overlay";
+
+    var alertBox = document.createElement("div");
+    alertBox.className = "alert-box " + className;
+    alertBox.innerText = message;
+
+    alertOverlay.appendChild(alertBox);
+    document.body.appendChild(alertOverlay);
+
+    setTimeout(function () {
+        alertOverlay.remove();
+    }, 2000);
+}
 function resetGame() {
     // document.getElementById('winner').style.display = "none";
     gameBoard = [
@@ -109,13 +120,9 @@ function showData() {
 function endGame() {
 
     if (currentPlayer === 'X') {
-        // document.getElementById('winner').innerHTML = '<h2>' + 'Player ' + players[1] + ' wins!' + '</h2>';
-        alert('Player ' + players[0] + ' wins!');
-
-    }
-    else {
-        // document.getElementById('winner').innerHTML = '<h2>' + 'Player ' + players[0] + ' wins!' + '</h2>';
-        alert('Player ' + players[1] + ' wins!');
+        showAlert("" + players[0] + " wins!", "success");
+    } else {
+        showAlert("" + players[1] + " wins!", "success");
     }
 
     resetGame();
