@@ -102,7 +102,7 @@ body {
   align-items: center;
 }
 
-.drawImg {
+#drawImg {
   max-width: 100%;
   height: auto;
 }
@@ -121,6 +121,10 @@ body {
     height: 30px;
     font-size: 14px;
   }
+
+#drawBtn{
+padding: 0;
+}
 
   .card {
     width: 80px;

@@ -5,8 +5,8 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="/CSS/gameLayoutStyle.css" />
   <link rel="stylesheet" href="/CSS/style.css" />
+  <link rel="stylesheet" href="/CSS/gameLayoutStyle.css" />
   <script src="/JS/chorChithiScript.js"></script>
   <title>Chor-Chitthi | NrrWebGames</title>
 </head>
@@ -56,8 +56,23 @@
     <div class="right-container">
       <h1 id="isChor">?...</h1><br><br>
       <h1 id="counter-container">Counter</h1><br>
-      <button id="drawBtn" class="button" onclick="draw()"><img class="drawImg" src="/IMG/cardThrow2.png"
-          alt=""><br>Draw</button><br>
+      <button id="drawBtn" class="button" onclick="draw()">
+        <img class="drawImg" src="/IMG/cardThrow2.png" alt="">
+      </button>
+      <script>
+        var drawImg = document.querySelector('.drawImg');
+        var originalSrc = drawImg.src;
+        var hoverSrc = '/IMG/cardThrow1.png';
+
+        drawImg.addEventListener('mouseover', function () {
+          drawImg.src = hoverSrc;
+        });
+
+        drawImg.addEventListener('mouseout', function () {
+          drawImg.src = originalSrc;
+        });
+      </script>
+      <br>
       <button id="scrBtn" class="button" onclick="scoresPage()">Scores</button>
 
       <!-- <a href="/HTML/scoreBoard.html">scoreBoard</a> -->
