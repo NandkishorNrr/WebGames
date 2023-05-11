@@ -12,10 +12,31 @@ function makeMove(row, col) {
     if (gameBoard[row][col] === '') {
         gameBoard[row][col] = currentPlayer;
         document.getElementsByClassName('cell')[row * 3 + col].textContent = currentPlayer;
+
+        // Delay the execution of checkWin() by 1 second
+        setTimeout(() => {
+            checkWin();
+        }, 1000);
+
         currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
-        checkWin();
+
+        // document.getElementById("p1Turn").style.display("none");
+        // document.getElementById("p2Turn").style.display("none");
+
+        if (currentPlayer === 'X') {
+            document.getElementById("p2Turn").innerHTML = '<h3>' + "It's your turn!" + '</h3>';
+            document.getElementById("p1Turn").style.display = "none";
+            document.getElementById("p2Turn").style.display = "block";
+        } else {
+            // document.getElementById("p2Turn").style.display("block");
+
+            document.getElementById("p1Turn").innerHTML = '<h3>' + "It's your turn!" + '</h3>';
+            document.getElementById("p2Turn").style.display = "none";
+            document.getElementById("p1Turn").style.display = "block";
+        }
     }
 }
+
 
 function checkWin() {
     var winningCombinations = [
@@ -80,6 +101,9 @@ function showAlert(message, className) {
     }, 2000);
 }
 function resetGame() {
+
+    document.getElementById("p1Turn").style.display = "none";
+    // document.getElementById("p2Turn").style.display = "none";
     // document.getElementById('winner').style.display = "none";
     gameBoard = [
         ['', '', ''],
@@ -112,6 +136,7 @@ function submitForm() {
 }
 
 function showData() {
+    document.getElementById("p2Turn").innerHTML = '<h3>' + "It's your turn!" + '</h3>';
     // Update the information container
     document.getElementById('player1').innerHTML = '<h2>' + 'Player1: ' + players[0] + '(0)</h2>';
     document.getElementById('player2').innerHTML = '<h2>' + 'Player2: ' + players[1] + '(X)</h2>';

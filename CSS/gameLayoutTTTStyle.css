@@ -51,21 +51,51 @@
 }
 
 .alert-box {
-    background-color: rgb(214, 155, 155);
-    border: 2px solid rgb(52, 9, 9);
-    border-radius: 5px;
-    padding: 10px;
-    width: 25rem;
+    background-color: #f7d6cf;
+    border: 5px solid rgb(52, 9, 9);
+    border-radius: 15px;
+    padding: 20px;
+    width: 500px;
     text-align: center;
-    font-size: 67px;
+    font-size: 70px;
     font-weight: bold;
-    color: rgb(52, 9, 9);
+    color: #c63939;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+    animation: confetti 2s ease-out;
 }
 
 .alert-box.success {
-    background-color: rgb(232, 220, 180);
+    background-color: #f3e0a9;
     border-color: rgb(52, 9, 9);
     color: #155724;
+}
+
+
+
+@keyframes confetti {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    25% {
+        transform: translate(-50%, -50%) rotate(5deg);
+    }
+
+    50% {
+        transform: translate(-50%, -50%) rotate(-5deg);
+    }
+
+    75% {
+        transform: translate(-50%, -50%) rotate(3deg);
+    }
+
+    100% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
 }
 
 .alert-box.error {
@@ -79,3 +109,34 @@
     border-color: rgb(52, 9, 9);
     color: #856404;
 }
+
+
+@media (max-width: 600px) {
+      /* Adjust styles for small screens here */
+
+      /* Example: Center the container */
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      /* Example: Adjust button styles for small screens */
+      .button {
+        font-size: 1.2em;
+      }
+
+      /* Example: Adjust board layout for small screens */
+      .board {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        grid-gap: 5px;
+      }
+
+      /* Example: Adjust cell size for small screens */
+      .cell {
+        width: 50px;
+        height: 50px;
+      }
+    }
