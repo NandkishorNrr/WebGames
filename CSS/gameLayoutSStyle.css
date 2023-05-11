@@ -1,0 +1,41 @@
+.middle-container {
+    background-color: rgba(52, 9, 9, 0.85);
+}
+
+.left-container {
+    flex: 1;
+}
+
+.middle-container {
+    flex: 1.7;
+}
+
+.right-container {
+    flex: 1;
+}
+
+#game-board {
+    background-color: rgba(52, 9, 9, 0.200);
+    position: relative;
+    width: 700px;
+    height: 700px;
+    border: 2px solid rgb(232, 220, 180);
+    border-radius: 2%;
+
+}
+
+.snake-dot {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: rgb(232, 220, 180);
+}
+
+.food-dot {
+    position: absolute;
+    width: 20px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: rgb(52, 9, 9);
+}

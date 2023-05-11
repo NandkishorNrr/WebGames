@@ -1,29 +1,31 @@
 <!DOCTYPE html>
 <html>
-  <head>
-     <title>Snake | NrrWebGames</title>
-    <link rel="stylesheet" href="/CSS/gameLayoutStyle.css" />
-    <link rel="stylesheet" href="/CSS/style.css" />
-    <script src="/JS/gameLayoutScript.js"></script>
-  </head>
-  <body>
-    <div class="container">
-      <div class="left-container">
-        <button class="button draw-button">Draw</button>
-        <!-- <button class="button new-game-button">New Game</button> -->
-        <button class="button new-game-button" onclick="displayPage()">
-          New Game
-        </button>
 
-        <button class="button end-game-button">End Game</button>
-      </div>
-      <div class="middle-container">
-        
-      </div>
-      <div class="right-container">
-        
-      </div>
+<head>
+  <title>Snake | NrrWebGames</title>
+  <link rel="stylesheet" href="/CSS/gameLayoutStyle.css" />
+  <link rel="stylesheet" href="/CSS/style.css" />
+  <link rel="stylesheet" href="/CSS/gameLayoutSStyle.css">
+  <script src="/JS/snakeScript.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="left-container">
+      <button id="toggle-button" onclick="toggleGamePause()">Pause</button>
+      <!-- <button class="button new-game-button">New Game</button> -->
+      <button class="button new-game-button" onclick="displayPage()">
+        New Game
+      </button>
+      <button class="button end-game-button">End Game</button>
     </div>
-    <script src="script.js"></script>
-  </body>
+    <div class="middle-container">
+      <div id="game-board"></div>
+    </div>
+    <div class="right-container">
+
+    </div>
+  </div>
+</body>
+
 </html>
