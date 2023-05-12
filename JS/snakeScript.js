@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let score = 0;
     let gameLoop;
     let gameCount = 0;
-    let isGamePaused = false;
+    let isGamePaused = true;
     let highestScore = 0;
 
     function draw() {
