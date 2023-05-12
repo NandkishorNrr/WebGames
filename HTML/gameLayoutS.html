@@ -12,18 +12,21 @@
 <body>
   <div class="container">
     <div class="left-container">
-      <button id="toggle-button" onclick="toggleGamePause()">Pause</button>
+      <button id="toggle-button" onclick="toggleGamePause()">Play</button>
       <!-- <button class="button new-game-button">New Game</button> -->
       <button class="button new-game-button" onclick="displayPage()">
         New Game
       </button>
-      <button class="button end-game-button">End Game</button>
+      <button class="button end-game-button" onclick="endGame()">End Game</button>
     </div>
     <div class="middle-container">
       <div id="game-board"></div>
     </div>
     <div class="right-container">
-
+      <p id="playerName"></p>
+      <p id="round"></p>
+      <p id="currentScore"></p>
+      <p id="highestScore">Score</p>
     </div>
   </div>
 </body>

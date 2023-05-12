@@ -1,3 +1,5 @@
+let players = JSON.parse(localStorage.getItem('players')) || [];
+
 document.addEventListener('DOMContentLoaded', () => {
     const gameBoard = document.getElementById('game-board');
     const gridSize = 20;
@@ -10,10 +12,10 @@ document.addEventListener('DOMContentLoaded', () => {
     let gameLoop;
     let gameCount = 0;
     let isGamePaused = false;
+    let highestScore = 0;
 
     function draw() {
         gameBoard.innerHTML = '';
-
         snake.forEach((dot) => {
             const snakeDot = document.createElement('div');
             snakeDot.className = 'snake-dot';
@@ -27,6 +29,12 @@ document.addEventListener('DOMContentLoaded', () => {
         foodDot.style.left = food.x + 'px';
         foodDot.style.top = food.y + 'px';
         gameBoard.appendChild(foodDot);
+
+        document.getElementById('playerName').innerHTML = '<h2>Player:  ' + players[0] + '</h2>';
+        document.getElementById('round').innerHTML = '<h2>Chance:  ' + (gameCount + 1) + ' / 3' + '</h2>';
+        document.getElementById('currentScore').innerHTML = '<h2>You Scored:  ' + score + '<h2>';
+        document.getElementById('highestScore').innerHTML = '<h2>Highest Score:  ' + highestScore + '</h2>';
+
     }
 
     function update() {
@@ -52,11 +60,16 @@ document.addEventListener('DOMContentLoaded', () => {
         if (head.x === food.x && head.y === food.y) {
             score += 10;
             generateFood();
+            snakeSpeed -= 10;
         } else {
             snake.pop();
         }
 
         if (isCollision()) {
+            if (highestScore < score) {
+                highestScore = score
+            }
+            score = 0;
             clearInterval(gameLoop);
             gameCount++;
 
@@ -66,10 +79,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 direction = 'left';
                 gameLoop = setInterval(update, snakeSpeed);
             } else {
-                alert('Game Over!');
+                showGameOverAlert();
+                setTimeout(restartGame, 2000);
             }
         }
-
         draw();
     }
 
@@ -168,4 +181,67 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function displayPage() {
     window.location.href = "/HTML/games.html";
+}
+
+function submitForm() {
+    // eraseData();
+    // Get the form players
+    players[0] = document.getElementById('player1').value;
+
+    // Add the players to the array
+    players.push({ player1: players[0] });
+
+    // Save the players to local storage
+    localStorage.setItem('players', JSON.stringify(players));
+
+    // open home page
+    window.location = "/HTML/gameLayoutS.html";
+}
+
+function showGameOverAlert() {
+    // Create a game over element
+    var gameOverElement = document.createElement('div');
+    gameOverElement.setAttribute('id', 'game-over');
+    var msg = 'Game Over!';
+    gameOverElement.innerText = msg;
+
+    // Style the game over element
+    gameOverElement.style.position = 'fixed';
+    gameOverElement.style.top = '50%';
+    gameOverElement.style.left = '50%';
+    gameOverElement.style.transform = 'translate(-50%, -50%)';
+    gameOverElement.style.backgroundColor = 'rgb(232, 220, 180)';
+    gameOverElement.style.color = 'rgb(52, 9, 9)';
+    gameOverElement.style.padding = '20px';
+    gameOverElement.style.fontSize = '24px';
+    gameOverElement.style.fontWeight = 'bold';
+    gameOverElement.style.borderRadius = '10px';
+    gameOverElement.style.boxShadow = '0px 4px 8px rgba(0, 0, 0, 0.4)';
+
+    // Append the game over element to the body
+    document.body.appendChild(gameOverElement);
+}
+function restartGame() {
+    // Remove the game over element from the body
+    var gameOverElement = document.getElementById('game-over');
+    if (gameOverElement) {
+        gameOverElement.parentNode.removeChild(gameOverElement);
+    }
+
+    // Restart the game
+    snake = [{ x: boardSize - gridSize, y: boardSize - gridSize }];
+    direction = 'left';
+    gameCount = 0;
+    highestScore = 0;
+    score = 0;
+    clearInterval(gameLoop);
+    gameLoop = setInterval(update, snakeSpeed);
+}
+
+function endGame() {
+
+    showGameOverAlert();
+    setTimeout(restartGame, 2000);
+
+    restartGame();
 }
