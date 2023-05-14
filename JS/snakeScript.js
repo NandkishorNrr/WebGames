@@ -3,7 +3,9 @@ let players = JSON.parse(localStorage.getItem('players')) || [];
 document.addEventListener('DOMContentLoaded', () => {
     const gameBoard = document.getElementById('game-board');
     const gridSize = 20;
-    const boardSize = 700;
+    
+    const boardSizeX = 680;
+    const boardSizeY = 680;
     const snakeSpeed = 150;
     let snake = [{ x: 200, y: 200 }];
     let direction = 'right';
@@ -11,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let score = 0;
     let gameLoop;
     let gameCount = 0;
-    let isGamePaused = true;
+    let isGamePaused = false;
     let highestScore = 0;
 
     function draw() {
@@ -75,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (gameCount < 3) {
                 // Restart the game with snake starting from the opposite side
-                snake = [{ x: boardSize - gridSize, y: boardSize - gridSize }];
+                snake = [{ x: boardSizeX - gridSize, y: boardSizeY - gridSize }];
                 direction = 'left';
                 gameLoop = setInterval(update, snakeSpeed);
             } else {
@@ -87,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function generateFood() {
-        const maxPos = boardSize / gridSize;
+        const maxPos = boardSizeY / gridSize;
         food = {
             x: Math.floor(Math.random() * maxPos) * gridSize,
             y: Math.floor(Math.random() * maxPos) * gridSize,
@@ -102,9 +104,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const head = snake[0];
         if (
             head.x < 0 ||
-            head.x >= boardSize ||
+            head.x >= boardSizeX ||
             head.y < 0 ||
-            head.y >= boardSize
+            head.y >= boardSizeY
         ) {
             return true;
         }
@@ -229,7 +231,7 @@ function restartGame() {
     }
 
     // Restart the game
-    snake = [{ x: boardSize - gridSize, y: boardSize - gridSize }];
+    snake = [{ x: boardSizeX - gridSize, y: boardSizeY- gridSize }];
     direction = 'left';
     gameCount = 0;
     highestScore = 0;

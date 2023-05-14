@@ -152,6 +152,10 @@ div .card:hover {
   transform: translate(-0.5%, 0.5%) scale(1.05);
 }
 
+#drawBtn{
+background: rgb(232, 220, 180);
+ padding: 0%;
+}
 
 /* counter h1  */
 #counter-container {

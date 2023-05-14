@@ -17,25 +17,24 @@
 #game-board {
     background-color: rgba(52, 9, 9, 0.200);
     position: relative;
-    width: 700px;
+    width: 680px;
     height: 700px;
-    border: 2px solid rgb(232, 220, 180);
+    border: 5px solid rgb(232, 220, 180);
     border-radius: 2%;
-
 }
 
 .snake-dot {
     position: absolute;
-    width: 20px;
-    height: 15px;
+    width: 25px;
+    height: 20px;
     border-radius: 50%;
     background-color: rgb(232, 220, 180);
 }
 
 .food-dot {
     position: absolute;
-    width: 15px;
-    height: 15px;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
     background-color: rgb(52, 9, 9);
 }

@@ -25,6 +25,7 @@ div #card-chorChitthi {
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center center;
+	border: 10px solid rgb(52, 9, 9);
 
 }
 
@@ -33,7 +34,7 @@ div #card-ticTacToe {
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center center;
-
+	border: 10px solid rgb(52, 9, 9);
 }
 
 div #card-snake {
@@ -41,6 +42,7 @@ div #card-snake {
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center center;
+	border: 10px solid rgb(52, 9, 9);
 }
 
 div .game-card:hover {
