@@ -1,38 +1,42 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="/CSS/style.css" />
-   <title>Contact | NrrWebGames</title>
-    <link rel="stylesheet" href="/CSS/contactStyle.css" />
-  </head>
-  <body>
-    <nav>
-      <a href="/index.html" target="">Home</a>
-      <a href="/HTML/games.html">Games</a>
-      <a href="/HTML/about.html">About</a>
-      <a href="/HTML/contact.html">Contact</a>
-    </nav>
-    <header>
-      <h1>Contact Us</h1>
-      <p>Welcome to our web game!</p>
-    </header>
-    <section>
-      <form action="#" method="POST">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required />
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required />
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact | NrrWebGames</title>
+  <link rel="stylesheet" href="/CSS/style.css" />
+  <link rel="stylesheet" href="/CSS/contactStyle.css" />
+</head>
 
-        <label for="message">Message:</label>
-        <textarea id="message" name="message" required></textarea>
+<body>
+  <nav>
+    <a href="/index.html" target="">Home</a>
+    <a href="/HTML/games.html">Games</a>
+    <a href="/HTML/about.html">About</a>
+    <a href="/HTML/contact.html">Contact</a>
+  </nav>
+  <header>
+    <h1>Contact Us</h1>
+    <p>Welcome to our web game!</p>
+  </header>
+  <section>
+    <form action="#" method="POST" onsubmit="sendEmail(); return false;">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" placeholder="Your Name" required />
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" placeholder="Your Email" required />
+      <label for="phone">Phone No.:</label>
+      <input type="tel" id="phone" name="phone" placeholder="Your Phone Number" required />
+      <label for="message">Message:</label>
+      <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+      <button type="submit" class="btn">Send</button>
+    </form>
+  </section>
+  <footer>
+    <p>&copy; 2023 NrrWebGames. All rights reserved.</p>
+  </footer>
+  <script src="https://smtpjs.com/v3/smtp.js"></script>
+  <script src="/JS/contactScript.js"></script>
+</body>
 
-        <input type="submit" value="Submit" class="input"/>
-      </form>
-    </section>
-    <footer>
-      <p>Copyright &copy; 2023 Web Game Name</p>
-    </footer>
-  </body>
 </html>

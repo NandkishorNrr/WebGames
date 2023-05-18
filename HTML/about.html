@@ -1,31 +1,133 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="/CSS/style.css" />
-    <title>About | NrrWebGames</title>
-  </head>
-  <body>
-    <nav>
-      <a href="/index.html" target="">Home</a>
-      <a href="/HTML/games.html">Games</a>
-      <a href="/HTML/about.html">About</a>
-      <a href="/HTML/contact.html">Contact</a>
-    </nav>
-    <header>
-      <h1>About Us</h1>
-      <p>Welcome to our web game!</p>
-    </header>
-    <section>
-      <h2>About the Game</h2>
-      <p>Insert information about the game here.</p>
-      <h2>How to Play</h2>
-      <p>Insert instructions on how to play the game here.</p>
-      <h2>Credits</h2>
-      <p>Insert credits for the game here.</p>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="/CSS/style.css" />
+  <link rel="stylesheet" href="/CSS/aboutStyle.css">
+  <title>About | NrrWebGames</title>
+</head>
+
+<body>
+  <nav>
+    <a href="/index.html" target="">Home</a>
+    <a href="/HTML/games.html">Games</a>
+    <a href="/HTML/about.html">About</a>
+    <a href="/HTML/contact.html">Contact</a>
+  </nav>
+  <header>
+    <h1>About Us</h1>
+    <p>Welcome to our web game!</p>
+  </header>
+  <section>
+    <h2>About the Games</h2>
+    <div class="game-cards">
+      <div class="game-card">
+        <h3>Chor-Chitthi</h3>
+        <p>Are you ready for some exciting gaming adventures? Introducing our collection of thrilling web games that
+          will keep you hooked for hours on end! Let's start with "Raja, Mantri, Chor, Sipahi," a captivating strategy
+          game inspired by the classic Indian card game. Strategize and outsmart your opponents as you navigate through
+          the intricate web of roles and identities. It's a game that will test your wit and decision-making skills!</p>
+      </div>
+
+      <div class="game-card">
+        <h3>Tic Tac Toe</h3>
+        <p>Next up, we have the timeless favorite, "Tic Tac Toe." Challenge your friends or engage in an intense battle
+          against our advanced AI. With its simple rules and addictive gameplay, this classic game guarantees endless
+          entertainment. Experience the rush of anticipation as you aim to line up three of your symbols in a row. It's
+          a battle of Xs and Os where only the most strategic player emerges victorious!</p>
+      </div>
+
+      <div class="game-card">
+        <h3>Snake</h3>
+        <p>And let's not forget about our charming "Snake" game. Embark on a nostalgic journey as you guide the hungry
+          serpent through a maze of obstacles, gobbling up tasty treats along the way. As the snake grows longer with
+          each meal, your agility and reflexes will be put to the test. With its intuitive controls and vibrant visuals,
+          this game is a perfect blend of simplicity and excitement.</p>
+      </div>
+    </div>
+    <p class="gamePara">Whether you're seeking strategic challenges, nostalgic fun, or friendly competition, our web game
+      collection
+      has something for everyone. So dive in, explore, and let the games begin!</p>
+
+    <h2>How to Play</h2>
+    <div class="game-cards">
+      <div class="game-card">
+        <h3>Chor-Chitthi</h3>
+        <p>
+
+          <li>Each player is assigned a role: Raja (King), Mantri (Minister), Chor (Thief), or Sipahi (Soldier).</li>
+          <br>
+          <li>The game is played using a deck of cards or slips of paper with the roles written on them.</li><br>
+          <li>The objective of the game varies based on the role:
+            <ul>Raja: Try to identify the Chor.</ul>
+            <ul>Mantri: Support the Raja and provide clues.</ul>
+            <ul>Chor: Try to steal the treasure without being caught.</ul>
+            <ul>Sipahi: Protect the Raja and prevent the Chor from stealing the treasure.</ul>
+          </li>
+          <li>Players take turns making moves and interacting with each other by asking questions or making statements.
+          </li>
+          <li>Through deduction and observation, players try to identify the roles of others and protect their own role.
+          </li>
+          <li>The game ends when the Raja successfully identifies the Chor or the Chor steals the treasure.</li>
+        </p>
+      </div>
+
+      <div class="game-card">
+        <h3>Tic Tac Toe</h3>
+        <p>
+          <li>Tic Tac Toe is played on a 3x3 grid.</li><br>
+          <li>Two players take turns marking spaces with their respective symbols, in our game X and O.</li><br>
+          <li>The objective is to get three of your symbols in a row horizontally, vertically, or diagonally.</li><br>
+          <li>Players take turns placing their symbol on an empty space.</li><br>
+          <li>The game ends when one player successfully forms a line of three symbols or when the grid is completely
+            filled.</li><br>
+          <li>If all spaces are filled and no player has formed a line, the game is declared a draw.</li><br>
+        </p>
+      </div>
+
+      <div class="game-card">
+        <h3>Snake</h3>
+        <li>In Snake, you control a growing snake that moves across a grid or a maze.</li><br>
+        <li>The objective is to eat food and grow while avoiding collision with the snake's own body or walls.</li><br>
+        <li>The snake continuously moves in a specific direction, and you must change its direction to navigate the
+          grid.</li><br>
+        <li>As the snake consumes food, it grows longer, making it increasingly challenging to maneuver.</li><br>
+        <li>The game ends if the snake collides with itself or the boundaries of the grid.</li><br>
+        <li>Use the arrow keys or swipe gestures to change the snake's direction.</li><br>
+        <li>Strategize and plan your moves to maximize your score and avoid obstacles.</li><br>
+      </div>
+    </div>
+    <section class="credit-section">
+      <div class="container">
+        <h2>Credit Section</h2>
+        <p>This website is proudly brought to you by the following contributors:</p>
+
+        <ul class="contributors-list">
+          <li><strong>Game Development:</strong>  Nandkishor Rathore</li>
+          <li><strong>Design and UI:</strong>  Nandkishor Rathore</li>
+          <li><strong>Content Writing:</strong>Nandkishor Rathore</li>
+          <li><strong>Graphics and Artwork:</strong>  Nandkishor Rathore</li>
+          <li><strong>Programming:</strong>  Nandkishor Rathore</li>
+        </ul>
+
+        <p>We would like to express our sincere gratitude to all the individuals who have contributed their time,
+          skills, and creativity to make this website possible. Your dedication and expertise have greatly enriched the
+          gaming experience for our users.</p>
+
+        <p>We would also like to acknowledge the open-source community and the creators of the tools, frameworks, and
+          libraries used in the development of this website. Without their valuable contributions, this project would
+          not have been possible.</p>
+
+        <p>Thank you for visiting our website and for being a part of our gaming community. Enjoy the games and have a
+          great time!</p>
+      </div>
     </section>
-    <footer>
-      <p>Copyright &copy; 2023 Web Game Name</p>
-    </footer>
-  </body>
+
+  </section>
+  <footer>
+    <p>Copyright &copy; 2023 NrrWebGames</p>
+  </footer>
+</body>
+
 </html>

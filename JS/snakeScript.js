@@ -3,17 +3,17 @@ let players = JSON.parse(localStorage.getItem('players')) || [];
 document.addEventListener('DOMContentLoaded', () => {
     const gameBoard = document.getElementById('game-board');
     const gridSize = 20;
-    
+
     const boardSizeX = 680;
     const boardSizeY = 680;
-    const snakeSpeed = 150;
+    const snakeSpeed = 300;
     let snake = [{ x: 200, y: 200 }];
     let direction = 'right';
     let food = { x: 0, y: 0 };
     let score = 0;
     let gameLoop;
-    let gameCount = 0;
-    let isGamePaused = false;
+    let gameCount = 1;
+    let isGamePaused = true;
     let highestScore = 0;
 
     function draw() {
@@ -33,7 +33,11 @@ document.addEventListener('DOMContentLoaded', () => {
         gameBoard.appendChild(foodDot);
 
         document.getElementById('playerName').innerHTML = '<h2>Player:  ' + players[0] + '</h2>';
-        document.getElementById('round').innerHTML = '<h2>Chance:  ' + (gameCount + 1) + ' / 3' + '</h2>';
+
+        if (gameCount > 3) {
+            gameCount = 3;
+        }
+        document.getElementById('round').innerHTML = '<h2>Chance:  ' + (gameCount) + ' / 3' + '</h2>';
         document.getElementById('currentScore').innerHTML = '<h2>You Scored:  ' + score + '<h2>';
         document.getElementById('highestScore').innerHTML = '<h2>Highest Score:  ' + highestScore + '</h2>';
 
@@ -62,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (head.x === food.x && head.y === food.y) {
             score += 10;
             generateFood();
-            snakeSpeed -= 10;
+            snakeSpeed -= 50;
         } else {
             snake.pop();
         }
@@ -75,14 +79,14 @@ document.addEventListener('DOMContentLoaded', () => {
             clearInterval(gameLoop);
             gameCount++;
 
-            if (gameCount < 3) {
+            if (gameCount <= 3) {
                 // Restart the game with snake starting from the opposite side
                 snake = [{ x: boardSizeX - gridSize, y: boardSizeY - gridSize }];
                 direction = 'left';
                 gameLoop = setInterval(update, snakeSpeed);
             } else {
                 showGameOverAlert();
-                setTimeout(restartGame, 2000);
+                setTimeout(snakePage, 3000);
             }
         }
         draw();
@@ -185,6 +189,10 @@ function displayPage() {
     window.location.href = "/HTML/games.html";
 }
 
+function snakePage() {
+    window.location.href = "/HTML/gameLayoutS.html";
+}
+
 function submitForm() {
     // eraseData();
     // Get the form players
@@ -231,7 +239,7 @@ function restartGame() {
     }
 
     // Restart the game
-    snake = [{ x: boardSizeX - gridSize, y: boardSizeY- gridSize }];
+    snake = [{ x: boardSizeX - gridSize, y: boardSizeY - gridSize }];
     direction = 'left';
     gameCount = 0;
     highestScore = 0;

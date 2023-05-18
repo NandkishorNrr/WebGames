@@ -1,0 +1,135 @@
+.game-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.game-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.game-card {
+    background-color: rgb(232, 220, 180);
+    flex: 0 0 calc(33.33% - 20px);
+    color: rgb(52, 9, 9);
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    height: 70%;
+    /* Add scrollbar for taller content */
+    overflow: auto;
+    flex: 1;
+    min-width: 300px;
+    text-align: justify;
+
+}
+
+.game-card h3 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.game-card p {
+    color: rgb(52, 9, 9);
+    font-size: 16px;
+}
+
+#gamePara {
+    background-color: rgb(232, 220, 180);
+    color: rgb(52, 9, 9);
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    height: 70%;
+    min-width: 300px;
+    text-align: justify;
+}
+
+
+/* Media queries for responsiveness */
+@media only screen and (max-width: 768px) {
+    .game-card {
+        flex-basis: calc(50% - 20px);
+    }
+
+    .game-card h3 {
+        font-size: 20px;
+    }
+
+    .game-card p {
+        font-size: 14px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .game-card {
+        flex-basis: 100%;
+    }
+}
+
+
+/* Media queries for responsiveness */
+@media only screen and (max-width: 768px) {
+    .game-card {
+        flex-basis: calc(50% - 20px);
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .game-card {
+        flex-basis: 100%;
+    }
+}
+
+.credit-section {
+    
+    padding: 50px 0;
+    background-color: rgb(232, 220, 180);
+    color: rgb(52, 9, 9);
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: auto;
+    min-width: 300px;
+    text-align: justify;
+}
+
+.container {
+    max-width: 80%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+h2 {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.contributors-list {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 30px;
+}
+
+.contributors-list li {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.contributors-list li strong {
+    font-weight: bold;
+}
+
+p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}

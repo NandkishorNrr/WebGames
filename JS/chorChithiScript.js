@@ -5,7 +5,7 @@ let players = JSON.parse(localStorage.getItem('players')) || [];
 let scores = JSON.parse(localStorage.getItem('scores')) || [0, 0, 0, 0];
 
 // Create the characters array with initial values
-const characters = ["Raja", "Mantri", "Sipai", "Chor"];
+const characters = ["Raja", "Mantri", "Sipahi", "Chor"];
 
 // Create the value array with initial values
 const values = [1000, 500, 300, 0];
@@ -187,6 +187,9 @@ function generateRandomNumbers() {
 
 // throw 
 function draw() {
+
+  isChor = " ";
+
   // random index array
   const numbers = getUniqueRandomNumbers(4);
 
@@ -227,29 +230,36 @@ function draw() {
 }
 
 // 
-function isReplyNotTrue() {
+function isReplyNotTrue(flag) {
 
-  if (!isChor) {
+  if (!flag) {
     // if reply, false
 
     scores[chor - 1] = scores[chor - 1] + values[1];
+
     document.getElementById(chorC).innerHTML = '<h1>' + characters[3] + '</h1>'
       + '<h1>' + values[1] + '</h1>';
 
     scores[mantri - 1] = scores[mantri - 1] + values[3];
+
     document.getElementById(mantriC).innerHTML = '<h1>' + characters[1] + '</h1>'
       + '<h1>' + values[3] + '</h1>';
+
+    // adding score or sipai and raja in both case, reply maybe true or not
+    scores[sipai - 1] = scores[sipai - 1] + values[2];
+    scores[raja - 1] = scores[raja - 1] + values[0];
   }
 
-  else {
+  else if (flag) {
     // if reply, true
     scores[chor - 1] = scores[chor - 1] + values[3];
-    scores[mantri - 1] = scores[mantri - 1] + values[1];
-  }
 
-  // adding score or sipai and raja in both case, reply maybe true or not
-  scores[sipai - 1] = scores[sipai - 1] + values[2];
-  scores[raja - 1] = scores[raja - 1] + values[0];
+    scores[mantri - 1] = scores[mantri - 1] + values[1];
+
+    // adding score or sipai and raja in both case, reply maybe true or not
+    scores[sipai - 1] = scores[sipai - 1] + values[2];
+    scores[raja - 1] = scores[raja - 1] + values[0];
+  }
 
   // store cores data in local storage
   localStorage.setItem('scores', JSON.stringify(scores));
@@ -267,29 +277,26 @@ function hideNshowChorSipai() {
   document.getElementById(chorH).addEventListener("click", function () {
     // Set isChor to true when chorH is clicked
     isChor = true;
-    // save data according to reply is ture or false
-    isReplyNotTrue()
 
-    showChorSipai();
+    showChorSipai(isChor);
   });
 
   document.getElementById(sipaiH).addEventListener("click", function () {
     // Set isChor to false when sipaiH is clicked
     isChor = false;
-    // save data according to reply is ture or false
-    isReplyNotTrue()
 
-    showChorSipai();
+    showChorSipai(isChor);
   });
 
-  // check for assigning write result or not
   // document.getElementById('isChor').innerHTML = "Your answer is: " + isChor;
+
+  // save data according to reply is ture or false
 };
 
 
 //  show chor and sipai and clicked element chorH
 
-function showChorSipai() {
+function showChorSipai(flag) {
 
   // show card1CI card2CI 
   document.getElementById(chorC).style.display = "block";
@@ -305,6 +312,8 @@ function showChorSipai() {
     document.getElementById("drawBtn").style.display = "none";
     document.getElementById("scrBtn").style.display = "block";
   }
+
+  isReplyNotTrue(flag);
 }
 
 // generate rendom UniqueRandomNumbers
