@@ -1,10 +1,10 @@
 /* home */
 body {
-  background-color: #F0F0F0;
+  background-color: rgb(253, 241, 207);
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
-color: rgb(52, 9, 9);
+  color: rgb(52, 9, 9);
 }
 
 header {
@@ -12,6 +12,7 @@ header {
   color: rgb(52, 9, 9);
   padding-top: 3.5%;
   text-align: center;
+  padding-bottom: 1%;
 
 }
 
@@ -44,14 +45,20 @@ nav a:hover {
   font-weight: bolder;
 }
 
+nav a:active {
+  color: rgb(232, 220, 180); /* Change this to the desired active color */
+}
+
 section {
   height: 490px;
   padding: 20px;
   text-align: center;
 }
-section form{
-background-color:  rgb(232, 220, 180);
+
+section form {
+  background-color: rgb(232, 220, 180);
 }
+
 section h2 {
   font-size: 30px;
   margin: 0 0 20px 0;
@@ -107,6 +114,10 @@ footer {
   bottom: 0;
   left: 0;
   width: 100%;
+}
+
+footer p{
+  margin: .7%;
 }
 
 input[type="submit"] {

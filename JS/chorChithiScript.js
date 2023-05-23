@@ -236,30 +236,25 @@ function isReplyNotTrue(flag) {
     // if reply, false
 
     scores[chor - 1] = scores[chor - 1] + values[1];
-
     document.getElementById(chorC).innerHTML = '<h1>' + characters[3] + '</h1>'
       + '<h1>' + values[1] + '</h1>';
 
     scores[mantri - 1] = scores[mantri - 1] + values[3];
-
     document.getElementById(mantriC).innerHTML = '<h1>' + characters[1] + '</h1>'
       + '<h1>' + values[3] + '</h1>';
 
-    // adding score or sipai and raja in both case, reply maybe true or not
-    scores[sipai - 1] = scores[sipai - 1] + values[2];
-    scores[raja - 1] = scores[raja - 1] + values[0];
   }
 
-  else if (flag) {
+  if (flag) {
     // if reply, true
     scores[chor - 1] = scores[chor - 1] + values[3];
 
     scores[mantri - 1] = scores[mantri - 1] + values[1];
-
-    // adding score or sipai and raja in both case, reply maybe true or not
-    scores[sipai - 1] = scores[sipai - 1] + values[2];
-    scores[raja - 1] = scores[raja - 1] + values[0];
   }
+
+  // adding score or sipai and raja in both case, reply maybe true or not
+  scores[sipai - 1] = scores[sipai - 1] + values[2];
+  scores[raja - 1] = scores[raja - 1] + values[0];
 
   // store cores data in local storage
   localStorage.setItem('scores', JSON.stringify(scores));

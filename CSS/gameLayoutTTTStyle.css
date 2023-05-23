@@ -28,6 +28,10 @@
     border-radius: 2%;
 }
 
+.turn{
+    color: #155724;
+}
+
 .cell {
     display: flex;
     align-items: center;

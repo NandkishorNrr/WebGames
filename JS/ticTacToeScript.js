@@ -1,7 +1,7 @@
 // Check if there is any players in local storage
 let players = JSON.parse(localStorage.getItem('players')) || [];
 
-var currentPlayer = 'X';
+var currentPlayer = 'O';
 var gameBoard = [
     ['', '', ''],
     ['', '', ''],
@@ -25,13 +25,12 @@ function makeMove(row, col) {
 
         if (currentPlayer === 'X') {
             document.getElementById("p2Turn").innerHTML = '<h3>' + "It's your turn!" + '</h3>';
-            document.getElementById("p1Turn").style.display = "none";
+            document.getElementById("p1Turn").innerHTML = '<h3>' + "Please wait..." + '</h3>';
             document.getElementById("p2Turn").style.display = "block";
         } else {
             // document.getElementById("p2Turn").style.display("block");
-
             document.getElementById("p1Turn").innerHTML = '<h3>' + "It's your turn!" + '</h3>';
-            document.getElementById("p2Turn").style.display = "none";
+            document.getElementById("p2Turn").innerHTML = '<h3>' + "Please wait..." + '</h3>';
             document.getElementById("p1Turn").style.display = "block";
         }
     }
@@ -116,7 +115,9 @@ function resetGame() {
         cells[i].textContent = '';
     }
 
-    currentPlayer = 'X';
+    currentPlayer = 'O';
+    document.getElementById("p2Turn").style.display = "none";
+    document.getElementById("p1Turn").style.display = "block";
 }
 
 function submitForm() {
@@ -136,7 +137,8 @@ function submitForm() {
 }
 
 function showData() {
-    document.getElementById("p2Turn").innerHTML = '<h3>' + "It's your turn!" + '</h3>';
+    document.getElementById("p1Turn").innerHTML = '<h3>' + "It's your turn!" + '</h3>';
+    document.getElementById("p2Turn").innerHTML = '<h3>' + "Please wait..." + '</h3>';
     // Update the information container
     document.getElementById('player1').innerHTML = '<h2>' + 'Player1: ' + players[0] + '(0)</h2>';
     document.getElementById('player2').innerHTML = '<h2>' + 'Player2: ' + players[1] + '(X)</h2>';
