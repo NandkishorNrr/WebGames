@@ -8,11 +8,14 @@ let scores = JSON.parse(localStorage.getItem('scores')) || [0, 0, 0, 0];
 const characters = ["Raja", "Mantri", "Sipahi", "Chor"];
 
 // Create the value array with initial values
-const values = [1000, 500, 300, 0];
+let values = JSON.parse(localStorage.getItem('scores')) || [1000, 500, 300, 0];
 
 
 // Check if the counter value is already stored in localStorage
 let counter = parseInt(localStorage.getItem('counter')) || 1;
+
+// check the click even is chor or not
+let isChor = "";
 
 // const charactersIndices = [0, 1, 2, 3];
 let charactersIndices = [1, 2, 3, 4];
@@ -42,8 +45,8 @@ let sipaiC = " ";
 let rajaH = " ";
 let rajaC = " ";
 
-// check the click even is chor or not
-let isChor = "";
+// check is event executed
+let eventExecuted = false;
 
 // number of round
 let round = parseInt(localStorage.getItem('round')) || 4;
@@ -144,11 +147,23 @@ function endGame() {
 
 // scores page will
 function scoresPage() {
+  // udate last game, before show scores 
+  if (isChor)
+    replyTrue();
+  else
+    replyFalse();
+
   window.location.href = "/HTML/scoreBoard.html";
 }
 
 // Function to update the table fields
 function showScoreBoard() {
+  // udate last game scores
+  if (isChor)
+    replyTrue();
+  else
+    replyFalse();
+
   const rankIndices = getRankIndices();
 
   document.getElementById("first-player").innerHTML = players[rankIndices[0]];
@@ -225,40 +240,39 @@ function draw() {
   // increase counter by 1
   document.getElementById('counter-container').innerHTML = counter + " / " + round;
 
+  if (eventExecuted)
+    // udate scores
+    if (isChor)
+      replyTrue();
+    else
+      replyFalse();
+
   // increment counter after ever draw
   incrementCounter();
 }
 
-// 
-function isReplyNotTrue(flag) {
-
-  if (!flag) {
-    // if reply, false
-
-    scores[chor - 1] = scores[chor - 1] + values[1];
-    document.getElementById(chorC).innerHTML = '<h1>' + characters[3] + '</h1>'
-      + '<h1>' + values[1] + '</h1>';
-
-    scores[mantri - 1] = scores[mantri - 1] + values[3];
-    document.getElementById(mantriC).innerHTML = '<h1>' + characters[1] + '</h1>'
-      + '<h1>' + values[3] + '</h1>';
-
-  }
-
-  if (flag) {
-    // if reply, true
-    scores[chor - 1] = scores[chor - 1] + values[3];
-
-    scores[mantri - 1] = scores[mantri - 1] + values[1];
-  }
-
-  // adding score or sipai and raja in both case, reply maybe true or not
-  scores[sipai - 1] = scores[sipai - 1] + values[2];
-  scores[raja - 1] = scores[raja - 1] + values[0];
+function replyTrue() {
+  // if reply, true
+  scores[chor - 1] += values[3];
+  scores[mantri - 1] += values[1];
+  scores[sipai - 1] += values[2];
+  scores[raja - 1] += values[0];
 
   // store cores data in local storage
   localStorage.setItem('scores', JSON.stringify(scores));
 }
+
+// if reply, false
+function replyFalse() {
+  scores[chor - 1] += values[1];
+  scores[mantri - 1] += values[3];
+  scores[sipai - 1] += values[2];
+  scores[raja - 1] += values[0];
+
+  // store cores data in local storage
+  localStorage.setItem('scores', JSON.stringify(scores));
+}
+
 // hide chor and sipai
 function hideNshowChorSipai() {
 
@@ -268,30 +282,35 @@ function hideNshowChorSipai() {
   document.getElementById("isChor").style.display = "block";
   document.getElementById("isChor").innerHTML = "?...";
 
-  // Add click event listeners to card1HI and card2HI
-  document.getElementById(chorH).addEventListener("click", function () {
-    // Set isChor to true when chorH is clicked
-    isChor = true;
+  var isEventExecuting = false; // Variable to track if an event is already executing
 
-    showChorSipai(isChor);
+  document.getElementById(chorH).addEventListener("click", function () {
+    if (!isEventExecuting) {
+      isEventExecuting = true; // Mark event as executing
+      isChor = true;
+      showChorSipai();
+      isEventExecuting = false; // Reset event execution status
+      eventExecuted = true;
+    }
   });
 
   document.getElementById(sipaiH).addEventListener("click", function () {
-    // Set isChor to false when sipaiH is clicked
-    isChor = false;
-
-    showChorSipai(isChor);
+    if (!isEventExecuting) {
+      isEventExecuting = true; // Mark event as executing
+      isChor = false;
+      showChorSipai();
+      isEventExecuting = false; // Reset event execution status
+      eventExecuted = true;
+    }
   });
 
   // document.getElementById('isChor').innerHTML = "Your answer is: " + isChor;
-
-  // save data according to reply is ture or false
-};
+}
 
 
 //  show chor and sipai and clicked element chorH
 
-function showChorSipai(flag) {
+function showChorSipai() {
 
   // show card1CI card2CI 
   document.getElementById(chorC).style.display = "block";
@@ -302,13 +321,28 @@ function showChorSipai(flag) {
   // check for assigning write result true or not
   document.getElementById('isChor').innerHTML = " " + isChor;
 
+  // showing character and values acc. repkyied
+  if (!isChor) {
+    document.getElementById(chorC).innerHTML = '<h1>' + characters[3] + '</h1>'
+      + '<h1>' + values[1] + '</h1>';
+    document.getElementById(mantriC).innerHTML = '<h1>' + characters[1] + '</h1>'
+      + '<h1>' + values[3] + '</h1>';
+  }
+  else {
+    document.getElementById(chorC).innerHTML = '<h1>' + characters[3] + '</h1>'
+      + '<h1>' + values[3] + '</h1>';
+    document.getElementById(mantriC).innerHTML = '<h1>' + characters[1] + '</h1>'
+      + '<h1>' + values[1] + '</h1>';
+  }
+
   // counter = round, hide draw button
   if (counter >= round + 1) {
     document.getElementById("drawBtn").style.display = "none";
     document.getElementById("scrBtn").style.display = "block";
+
   }
 
-  isReplyNotTrue(flag);
+  // isReplyNotTrue(flag);
 }
 
 // generate rendom UniqueRandomNumbers

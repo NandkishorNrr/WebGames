@@ -153,8 +153,8 @@ body {
 div .card:hover {
   background-color: #f5f5f5;
   transform: translate(-0.5%, 0.5%) scale(1.05);
-border-style:double;
-border-color: rgb(31, 1, 1), 0.648);
+  border-style: double;
+  border-color: rgb(31, 1, 1), 0.648);
 }
 
 #drawBtn {
