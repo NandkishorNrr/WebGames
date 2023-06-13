@@ -188,3 +188,10 @@ div .card:hover {
   font-weight: bold;
   text-shadow: 2px 2px #555;
 }
+
+table,
+th,
+td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}

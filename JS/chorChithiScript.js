@@ -14,6 +14,9 @@ let values = JSON.parse(localStorage.getItem('scores')) || [1000, 500, 300, 0];
 // Check if the counter value is already stored in localStorage
 let counter = parseInt(localStorage.getItem('counter')) || 1;
 
+// Get the scores from local storage or initialize with four zeros
+let previousNumbers = JSON.parse(localStorage.getItem('previousNumbers')) || [0, 0, 0, 0];
+
 // check the click even is chor or not
 let isChor = "";
 
@@ -158,12 +161,6 @@ function scoresPage() {
 
 // Function to update the table fields
 function showScoreBoard() {
-  // udate last game scores
-  if (isChor)
-    replyTrue();
-  else
-    replyFalse();
-
   const rankIndices = getRankIndices();
 
   document.getElementById("first-player").innerHTML = players[rankIndices[0]];
@@ -202,9 +199,6 @@ function generateRandomNumbers() {
 
 // throw 
 function draw() {
-
-  isChor = " ";
-
   // random index array
   const numbers = getUniqueRandomNumbers(4);
 
@@ -240,22 +234,28 @@ function draw() {
   // increase counter by 1
   document.getElementById('counter-container').innerHTML = counter + " / " + round;
 
-  if (eventExecuted)
-    // udate scores
-    if (isChor)
-      replyTrue();
-    else
-      replyFalse();
-
+  // storing data for last numbers
+  previousNumbers[3] = chor;
+  previousNumbers[2] = sipai;
+  previousNumbers[1] = mantri;
+  previousNumbers[0] = raja;
+  // store cores data in local storage
+  localStorage.setItem('previousNumbers', JSON.stringify(previousNumbers));
   // increment counter after ever draw
   incrementCounter();
 }
 
 function replyTrue() {
+  let chor = previousNumbers[3];
+  let sipai = previousNumbers[2];
+  let mantri = previousNumbers[1];
+  let raja = previousNumbers[0];
+
+
   // if reply, true
   scores[chor - 1] += values[3];
-  scores[mantri - 1] += values[1];
   scores[sipai - 1] += values[2];
+  scores[mantri - 1] += values[1];
   scores[raja - 1] += values[0];
 
   // store cores data in local storage
@@ -264,9 +264,15 @@ function replyTrue() {
 
 // if reply, false
 function replyFalse() {
+  let chor = previousNumbers[3];
+  let sipai = previousNumbers[2];
+  let mantri = previousNumbers[1];
+  let raja = previousNumbers[0];
+
+
   scores[chor - 1] += values[1];
-  scores[mantri - 1] += values[3];
   scores[sipai - 1] += values[2];
+  scores[mantri - 1] += values[3];
   scores[raja - 1] += values[0];
 
   // store cores data in local storage
@@ -283,6 +289,7 @@ function hideNshowChorSipai() {
   document.getElementById("isChor").innerHTML = "?...";
 
   var isEventExecuting = false; // Variable to track if an event is already executing
+  // eventExecuted = false;
 
   document.getElementById(chorH).addEventListener("click", function () {
     if (!isEventExecuting) {
@@ -304,6 +311,14 @@ function hideNshowChorSipai() {
     }
   });
 
+  if (eventExecuted) {
+    // udate scores
+    if (isChor)
+      replyTrue();
+    else
+      replyFalse();
+    showScoreBoard();
+  }
   // document.getElementById('isChor').innerHTML = "Your answer is: " + isChor;
 }
 
