@@ -369,6 +369,9 @@ function showChorSipai() {
     document.getElementById("drawBtnSpace").style.display = "none";
     document.getElementById("scrBtn").style.display = "block";
   }
+  if (counter >= round + 2) {
+    scoresPage();
+  }
 
   // isReplyNotTrue(flag);
 }
