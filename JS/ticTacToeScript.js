@@ -126,6 +126,11 @@ function submitForm() {
     players[0] = document.getElementById('player1').value;
     players[1] = document.getElementById('player2').value;
 
+    if (document.getElementById('player1').value == "")
+        players[0] = "Shivani";
+    if (document.getElementById('player2').value == "")
+        players[1] = "Shubh";
+
     // Add the players to the array
     players.push({ player1: players[0], player2: players[1] });
 

@@ -1,5 +1,5 @@
 // Check if there is any players in local storage
-let players = JSON.parse(localStorage.getItem('players')) || [];
+let players = JSON.parse(localStorage.getItem('players')) || ["Ayush", "Ballu", "Shanvi", "Ravi"];
 
 // Get the scores from local storage or initialize with four zeros
 let scores = JSON.parse(localStorage.getItem('scores')) || [0, 0, 0, 0];
@@ -96,6 +96,17 @@ function submitForm() {
   players[1] = document.getElementById('player2').value;
   players[2] = document.getElementById('player3').value;
   players[3] = document.getElementById('player4').value;
+
+  if (document.getElementById('player1').value == "")
+    players[0] = "Ayush";
+  if (document.getElementById('player2').value == "")
+    players[1] = "Ballu";
+  if (document.getElementById('player3').value == "")
+    players[2] = "Shanvi";
+  if (document.getElementById('player4').value == "")
+    players[3] = "Ravi";
+
+
 
   round = document.getElementById('noRounds').value;
   localStorage.setItem('round', round);

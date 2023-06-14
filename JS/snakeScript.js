@@ -197,6 +197,8 @@ function submitForm() {
     // eraseData();
     // Get the form players
     players[0] = document.getElementById('player1').value;
+    if (document.getElementById('player1').value == "")
+        players[0] = "Tanish";
 
     // Add the players to the array
     players.push({ player1: players[0] });
