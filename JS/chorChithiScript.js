@@ -230,6 +230,7 @@ function draw() {
 
   // hide by  draw button after clicked it(it will show on select one of them cards)
   document.getElementById("drawBtn").style.display = "none";
+  document.getElementById("drawBtnSpace").style.display = "block";
 
   // increase counter by 1
   document.getElementById('counter-container').innerHTML = counter + " / " + round;
@@ -331,6 +332,7 @@ function showChorSipai() {
   document.getElementById(chorC).style.display = "block";
   document.getElementById(sipaiC).style.display = "block";
   document.getElementById("drawBtn").style.display = "block";
+  document.getElementById("drawBtnSpace").style.display = "none";
   document.getElementById("isChor").style.display = "block";
 
   // check for assigning write result true or not
@@ -353,8 +355,8 @@ function showChorSipai() {
   // counter = round, hide draw button
   if (counter >= round + 1) {
     document.getElementById("drawBtn").style.display = "none";
+    document.getElementById("drawBtnSpace").style.display = "none";
     document.getElementById("scrBtn").style.display = "block";
-
   }
 
   // isReplyNotTrue(flag);

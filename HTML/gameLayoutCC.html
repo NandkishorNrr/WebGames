@@ -55,8 +55,8 @@
     </div>
     <div class="right-container">
       <div id="scrCheck">
-        <h3>Score Check</h3>
         <table>
+          <caption style="color: rgb(52, 9, 9); font-weight: bolder;">Scores</caption>
           <thead>
             <tr>
               <th>Rank</th>
@@ -87,11 +87,16 @@
             </tr>
           </tbody>
         </table>
-      </div>
+      </div><br>
+
       <h1 id="isChor">?...</h1><br><br>
       <h1 id="counter-container">Counter</h1><br>
       <button id="drawBtn" class="button" onclick="draw()">
         <img class="drawImg" src="/IMG/cardThrow1.png" alt="">
+      </button>
+      <button id="drawBtnSpace">
+        <h1>Guess!</h1>
+        <h3>Who is chor?</h3>
       </button>
       <script>
         var drawImg = document.querySelector('.drawImg');
@@ -118,6 +123,7 @@
       showData();
       // do not show all time
       document.getElementById("scrBtn").style.display = "none";
+      document.getElementById("drawBtnSpace").style.display = "none";
       document.getElementById("isChor").style.display = "none";
     };
   </script>
