@@ -406,13 +406,22 @@ function getRankIndices() {
   // create a copy of the original array and sort it in descending order
   const sortedscores = [...scores].sort((a, b) => b - a);
 
+  // Create an empty stack
+  const stack = [];
+
   // create a new array to store the indices in descending order
   const rankscores = new Array(scores.length);
 
   // loop through the sorted array and find the index of each element in the original array
   for (let i = 0; i < sortedscores.length; i++) {
     const index = scores.indexOf(sortedscores[i]);
-    rankscores[i] = index;
+
+    if (!stack.includes(index))
+      rankscores[i] = index;
+    else
+      rankscores[i] = index + 1;
+
+    stack.push(index);
   }
   return rankscores;
 }
