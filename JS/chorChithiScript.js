@@ -410,18 +410,21 @@ function getRankIndices() {
   const stack = [];
 
   // create a new array to store the indices in descending order
-  const rankscores = new Array(scores.length);
+  const rankscores = new Array(scores.length).fill(-1);
 
   // loop through the sorted array and find the index of each element in the original array
   for (let i = 0; i < sortedscores.length; i++) {
     const index = scores.indexOf(sortedscores[i]);
-
-    if (!stack.includes(index))
-      rankscores[i] = index;
+    if(rankscores.includes(index)){
+      var c = 0;
+      while(rankscores.includes(c)){
+        c++;
+      } 
+      rankscores[i] = c;
+    }
     else
-      rankscores[i] = index + 1;
-
-    stack.push(index);
+        rankscores[i] = index;
+      
   }
   return rankscores;
 }
